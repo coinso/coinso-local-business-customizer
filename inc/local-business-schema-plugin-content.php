@@ -1,9 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ido
- * Date: 3/21/2017
- * Time: 10:10 AM
+/*
+ * This is the schema content, based on https://schema.org/LocalBusiness
+ *
+ * Since version 1.0
+ *
  */
 
 if( ! defined( 'ABSPATH' ) ) {
@@ -12,13 +12,13 @@ if( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="lbs-footer-schema">
 
-    <div itemscope itemtype="http://schema.org/<?php echo get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness';?>" id="schema_city" style="list-style-type: none; margin-left: -15px;">
+    <div itemscope itemtype="http://schema.org/<?php echo get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness';?>" id="lbs_schema" style="list-style-type: none; margin-left: -15px;">
         <ul class="lbs-footer-list" style="list-style-type: none; padding-left: 0;" >
             <li>
                 <div class="lbs-footer-logo">
                     <a itemprop="url" href="<?php echo get_home_url(); ?>" alt="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>"  title="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>">
                         <span itemprop="logo" itemtype="https://schema.org/ImageObject">
-                            <img src="<?php echo get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : get_stylesheet_directory_uri() .'/assets/img/logo.png' ;?>" alt="<?php echo get_bloginfo('name'); ?>" itemprop="image" style="width: 120px">
+                            <img src="<?php echo get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png' ;?>" alt="<?php echo get_bloginfo('name'); ?>" itemprop="image" style="width: 120px">
                         </span>
                     </a>
                 </div>
@@ -48,9 +48,11 @@ if( ! defined( 'ABSPATH' ) ) {
                 </div>
             </li>
             <li class="lbs-inline-block">
-                <div class="lbs-footer-hours"><i class="fa fa-clock-o">&nbsp</i>
-
-                    <time itemprop="openingHours" datetime="<?php echo get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : 'Mo-Su 00:00-23:59';?>"><?php echo get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : 'Mo-Su 00:00-23:59';?></time>
+                <div class="lbs-footer-hours"><i class="fa fa-clock-o">&nbsp;</i><?php echo _e('Opening Hours');?>
+                        <?php $oh = explode(',', get_theme_mod('schema_opening_hours'));
+                            //Enable Multiple time table
+                        ?>
+                    <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list' style='list-style-type: none;margin-left: 20px;'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
 
                 </div>
             </li>

@@ -8,7 +8,7 @@ Author URI: http://coinso.com
 Version: 1.0
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: ido_lbc
+Text Domain: coinso_lbc
 */
 if( ! defined( 'ABSPATH' ) ) {
     return;
@@ -28,7 +28,11 @@ require_once( plugin_dir_path(__FILE__) . '/inc/local-business-schema-plugin-ld-
 
 
 //Hooks
-//1.1 regster activation
+//1.1 register activation
+/*
+ * Since Verion 1.0
+ *
+ */
 register_activation_hook(__FILE__, 'coinso_lbs_activate_plugin');
 add_action('customize_register', 'coinso_local_business_customize_register');
 add_action('init', 'coinso_register_schema_shortcode');
@@ -36,8 +40,10 @@ add_action('wp_enqueue_scripts','coinso_local_business_schema_scripts' );
 
 
 //Shorcodes
-//add_action('admin_menu', 'coinso_lbs_plugin_menu');
-//add_action('admin_init', 'coinso_lbs_admin_init');
+/*
+ * Since Version 1.0
+ *
+ */
 
 //Schema Customizer
 function coinso_register_schema_shortcode(){
@@ -45,11 +51,22 @@ function coinso_register_schema_shortcode(){
 }
 function coinso_schema($args, $content){
 
-
     ob_start();
     include ('inc/local-business-schema-plugin-content.php');
 
     return ob_get_clean();
 }
 
+// Create the Menu link
 
+//function coinso_options_menu_link(){
+//    add_submenu_page(
+//        'options-general.php',
+//        __('Local Business Schema'),
+//        __('Local Business Schema'),
+//        'manage_options',
+//        admin_url( '/customize.php?autofocus[panel]=Local Business Information' )
+//    );
+//
+//}
+//add_action('admin_menu','coinso_options_menu_link');

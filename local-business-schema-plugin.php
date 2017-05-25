@@ -36,7 +36,7 @@ require_once( plugin_dir_path(__FILE__) . '/inc/local-business-schema-plugin-ld-
 register_activation_hook(__FILE__, 'coinso_lbs_activate_plugin');
 add_action('customize_register', 'coinso_local_business_customize_register');
 add_action('init', 'coinso_register_schema_shortcode');
-add_action('wp_enqueue_scripts','coinso_local_business_schema_scripts' );
+
 
 
 //Shorcodes

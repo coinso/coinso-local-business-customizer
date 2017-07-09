@@ -15,3 +15,7 @@
 #lbs-footer-schema{
     line-height:1.5;
 }
+
+#lbs-footer-schema br{
+    display: none;
+}

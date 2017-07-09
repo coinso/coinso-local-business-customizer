@@ -26,23 +26,34 @@ if( ! defined( 'ABSPATH' ) ) {
 
             <li>
                 <div class="footer-company-info">
-                    <span class="lbs-schema-cap" itemprop="name" style="font-size: 20px; font-weight: bold; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?></span><br>
-                    <span class="lbs-schema-cap" itemprop="description" style="font-size: 18px; font-weight: 500; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description');?></span>
+                    <div class="lbs-schema-cap"><span itemprop="name" style="font-size: 20px; font-weight: bold; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?></span></div>
+                    <div class="lbs-schema-cap" <span itemprop="description" style="font-size: 18px; font-weight: 500; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description');?></span></div>
                 </div>
             </li>
             <li class="lbs-inline-block">
                 <div class="lbs-footer-address">
                     <div class="lbs-description" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                        <i class="fa fa-home">&nbsp</i>
-                        <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name' ?></span>,<br>
-                        <span class="lbs-schema-cap" itemprop="addressLocality"><?php echo get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name' ?>,</span>
-                        <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region' ?>,</span>
+
+                        <?php
+                            if( get_theme_mod('schema_show_street_address') ){?>
+                                <i class="fa fa-home"> </i>
+                                <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name' ?></span>,
+                        <?php }
+
+                            if( get_theme_mod('schema_show_city')){ ?>
+                                <span class="lbs-schema-cap" itemprop="addressLocality"><?php echo get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name' ?>,</span>
+                        <?php }
+                            if( get_theme_mod('schema_show_region') ){ ?>
+                                <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region' ?>,</span>
+                        <?php }
+                            if( get_theme_mod('schema_show_zip') ){?>
                         <span class="lbs-schema-cap" itemprop="postalCode"><?php echo get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code' ?></span>
+                        <?php }?>
                     </div>
                 </div>
             </li>
             <li class="lbs-inline-block">
-                <div class="lbs-footer-phone"><i class="fa fa-phone">&nbsp</i>
+                <div class="lbs-footer-phone"><i class="fa fa-phone"> </i>
                     <span itemprop="telephone"><?php echo get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890' ?></span>
 
                 </div>

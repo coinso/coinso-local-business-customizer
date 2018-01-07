@@ -1,7 +1,7 @@
 <?php
 
 
-define('PLUGIN_FOLDER', plugins_url().'/coinso-local-business-customizer');
+define('PLUGIN_FOLDER', plugin_dir_url(__DIR__));
 
 if( !defined('ABSPATH')){
     return;

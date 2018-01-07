@@ -12,13 +12,13 @@ if( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="lbs-footer-schema">
 
-    <div itemscope itemtype="http://schema.org/<?php echo get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness';?>" id="lbs_schema" style="list-style-type: none; margin-left: -15px;">
-        <ul class="lbs-footer-list" style="list-style-type: none; padding-left: 0;" >
+    <div itemscope itemtype="http://schema.org/<?php echo get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness';?>" id="lbs_schema">
+        <ul class="lbs-footer-list">
             <li>
                 <div class="lbs-footer-logo">
                     <a itemprop="url" href="<?php echo get_home_url(); ?>" alt="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>"  title="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>">
                         <span itemprop="logo" itemtype="https://schema.org/ImageObject">
-                            <img src="<?php echo get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png' ;?>" alt="<?php echo get_bloginfo('name'); ?>" itemprop="image" style="width: 120px">
+                            <img src="<?php echo get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png' ;?>" alt="<?php echo get_bloginfo('name'); ?>" itemprop="image">
                         </span>
                     </a>
                 </div>
@@ -26,8 +26,16 @@ if( ! defined( 'ABSPATH' ) ) {
 
             <li>
                 <div class="footer-company-info">
-                    <div class="lbs-schema-cap"><span itemprop="name" style="font-size: 20px; font-weight: bold; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?></span></div>
-                    <div class="lbs-schema-cap" <span itemprop="description" style="font-size: 18px; font-weight: 500; text-transform: capitalize"><?php echo get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description');?></span></div>
+                    <div class="lbs-schema-cap">
+                        <span itemprop="name">
+                            <?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>
+                        </span>
+                    </div>
+                    <div class="lbs-schema-cap">
+                        <span itemprop="description">
+                            <?php echo get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description');?>
+                        </span>
+                    </div>
                 </div>
             </li>
             <li class="lbs-inline-block">
@@ -63,35 +71,35 @@ if( ! defined( 'ABSPATH' ) ) {
                         <?php $oh = explode(',', get_theme_mod('schema_opening_hours'));
                             //Enable Multiple time table
                         ?>
-                    <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list' style='list-style-type: none;margin-left: 20px;'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
+                    <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
 
                 </div>
             </li>
 
         </ul>
         <div class="lbs-footer-social-icons">
-            <ul class="lbs-list-inline" style="list-style-type: none;">
+            <ul class="lbs-list-inline">
                 <?php $fb_link = get_theme_mod('facebook_url_field');
                 if($fb_link){?>
-                    <li style="display: inline-block; float: left; margin-right: 10px">
+                    <li class="lbs-social-item">
                         <a href="<?php echo $fb_link;?>" target="_blank" rel="nofollow"><i class="fa fa-facebook"></i> </a>
                     </li>
                 <?php     }
                 $twitter_link = get_theme_mod('twitter_url_field');
                 if($twitter_link){?>
-                    <li style="display: inline-block; float: left; margin-right: 10px">
+                    <li class="lbs-social-item">
                         <a href="<?php echo $twitter_link;?>" target="_blank" rel="nofollow"><i class="fa fa-twitter"></i> </a>
                     </li>
                 <?php    }
                 $google_plus_link = get_theme_mod('google_plus_url_field');
                 if($google_plus_link){ ?>
-                    <li style="display: inline-block; float: left; margin-right: 10px">
+                    <li class="lbs-social-item">
                         <a href="<?php echo $google_plus_link;?>" target="_blank" rel="nofollow"><i class="fa fa-google-plus"></i> </a>
                     </li>
                 <?php }
                 $yelp_link = get_theme_mod('yelp_url_field');
                 if($yelp_link){?>
-                    <li style="display: inline-block; float: left; margin-right: 10px">
+                    <li class="lbs-social-item">
                         <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fa fa-yelp"></i> </a>
                     </li>
                 <?php    }

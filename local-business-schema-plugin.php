@@ -57,16 +57,3 @@ function coinso_schema($args, $content){
     return ob_get_clean();
 }
 
-// Create the Menu link
-
-//function coinso_options_menu_link(){
-//    add_submenu_page(
-//        'options-general.php',
-//        __('Local Business Schema'),
-//        __('Local Business Schema'),
-//        'manage_options',
-//        admin_url( '/customize.php?autofocus[panel]=Local Business Information' )
-//    );
-//
-//}
-//add_action('admin_menu','coinso_options_menu_link');

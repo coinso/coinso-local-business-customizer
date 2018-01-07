@@ -1,3 +1,4 @@
+.lbs-schema-cap,
 #lbs-footer-schema .schema_cap {
     text-transform: capitalize !important;
 }
@@ -10,7 +11,7 @@
     margin-left: -15px;
 }
 #lbs-footer-schema >.lbs-footer-logo > a > span > img{
-    width:50%;
+    max-width: 250px;
 }
 #lbs-footer-schema{
     line-height:1.5;
@@ -18,4 +19,15 @@
 
 #lbs-footer-schema br{
     display: none;
+}
+.hours-list{
+    list-style-type: none;
+}
+.lbs-list-inline{
+    list-style-type: none;
+}
+.lbs-list-inline li.lbs-social-item{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
 }

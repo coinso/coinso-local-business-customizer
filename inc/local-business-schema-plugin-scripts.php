@@ -1,12 +1,14 @@
 <?php
 
 
-define('PLUGIN_FOLDER', plugin_dir_url(__DIR__));
+
 
 if( !defined('ABSPATH')){
     return;
 }
-
+if ( !defined('PLUGIN_FOLDER')){
+    define('PLUGIN_FOLDER', plugin_dir_url(__DIR__));
+}
 function coinso_local_business_schema_scripts() {
     wp_enqueue_style( 'local-business-schema-css', PLUGIN_FOLDER . '/assets/css/style.css');
     wp_enqueue_style( 'local-business-schema-css', PLUGIN_FOLDER  . '/assets/css/style.css');

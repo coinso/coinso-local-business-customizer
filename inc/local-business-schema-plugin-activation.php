@@ -1,13 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ido
- * Date: 3/12/2017
- * Time: 3:38 PM
- */
+if( ! defined( 'ABSPATH' ) ) {
+    return;
+}
 
 function coinso_lbs_activate_plugin(){
-    if( version_compare( get_bloginfo('version'), '4.0', '<' ) ){
-        wp_die(__('You wordpress version is no supported, please upgrade version in order to use this plugin', 'coinso_lbs'));
+    if( version_compare( get_bloginfo('version'), '4.5', '<' ) ){
+        wp_die(__('Your WordPress version is not supported, please upgrade version in order to use this plugin', 'coinso_lbs'));
     }
 }

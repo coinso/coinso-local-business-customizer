@@ -1,3 +1,6 @@
+#lbs_schema>ul{
+    padding: 5px 10px 0 0;
+}
 .lbs-schema-cap,
 #lbs-footer-schema .schema_cap {
     text-transform: capitalize !important;
@@ -10,8 +13,8 @@
     list-style-type: none;
     margin-left: -15px;
 }
-#lbs-footer-schema >.lbs-footer-logo > a > span > img{
-    max-width: 250px;
+img.lbs_logo{
+    width: 150px;
 }
 #lbs-footer-schema{
     line-height:1.5;
@@ -30,4 +33,12 @@
     display: inline-block;
     float: left;
     margin-right: 10px;
+}
+
+.lbs-brand__name{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.lbs-brand__desc{
+    font-size: 1.2em;
 }

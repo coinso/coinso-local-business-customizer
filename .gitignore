@@ -46,3 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 .zip
+.less
+/assets/fonts/fontawesome-5.0.2/advanced-options
+/assets/fonts/fontawesome-5.0.2/svg-with-js
+/assets/fonts/fontawesome-5.0.2/use-on-desktop
+/assets/fonts/fontawesome-5.0.2/web-fonts-with-css/less
+/assets/fonts/fontawesome-5.0.2/web-fonts-with-css/scss

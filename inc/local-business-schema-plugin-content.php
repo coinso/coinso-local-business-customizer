@@ -44,7 +44,7 @@ if( ! defined( 'ABSPATH' ) ) {
 
                         <?php
                             if( get_theme_mod('schema_show_street_address') ){?>
-                                <i class="fa fa-home" aria-hidden="true"> </i>
+                                <i class="fas fa-home" aria-hidden="true"> </i>
                                 <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name' ?></span>
                         <?php }
 
@@ -61,13 +61,13 @@ if( ! defined( 'ABSPATH' ) ) {
                 </div>
             </li>
             <li class="lbs-inline-block">
-                <div class="lbs-footer-phone"><i class="fa fa-phone" aria-hidden="true"> </i>
+                <div class="lbs-footer-phone"><i class="fas fa-phone" aria-hidden="true"> </i>
                     <span itemprop="telephone"><?php echo get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890' ?></span>
 
                 </div>
             </li>
             <li class="lbs-inline-block">
-                <div class="lbs-footer-hours"><i class="fa fa-clock-o" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours');?>
+                <div class="lbs-footer-hours"><i class="far fa-clock" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours');?>
                         <?php $oh = explode(',', get_theme_mod('schema_opening_hours'));
                             //Enable Multiple time table
                         ?>
@@ -81,26 +81,26 @@ if( ! defined( 'ABSPATH' ) ) {
             <ul class="lbs-list-inline">
                 <?php $fb_link = get_theme_mod('facebook_url_field');
                 if($fb_link){?>
-                    <li class="lbs-social-item">
-                        <a href="<?php echo $fb_link;?>" target="_blank" rel="nofollow"><i class="fa fa-facebook" aria-hidden="true"></i> </a>
+                    <li class="lbs-social-item facebook">
+                        <a href="<?php echo $fb_link;?>" target="_blank" rel="nofollow"><i class="fab fa-facebook-f" aria-hidden="true"></i> </a>
                     </li>
                 <?php     }
                 $twitter_link = get_theme_mod('twitter_url_field');
                 if($twitter_link){?>
-                    <li class="lbs-social-item">
-                        <a href="<?php echo $twitter_link;?>" target="_blank" rel="nofollow"><i class="fa fa-twitter" aria-hidden="true"></i> </a>
+                    <li class="lbs-social-item twitter">
+                        <a href="<?php echo $twitter_link;?>" target="_blank" rel="nofollow"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
                     </li>
                 <?php    }
                 $google_plus_link = get_theme_mod('google_plus_url_field');
                 if($google_plus_link){ ?>
-                    <li class="lbs-social-item">
-                        <a href="<?php echo $google_plus_link;?>" target="_blank" rel="nofollow"><i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                    <li class="lbs-social-item google-plus">
+                        <a href="<?php echo $google_plus_link;?>" target="_blank" rel="nofollow"><i class="fab fa-google-plus" aria-hidden="true"></i> </a>
                     </li>
                 <?php }
                 $yelp_link = get_theme_mod('yelp_url_field');
                 if($yelp_link){?>
-                    <li class="lbs-social-item">
-                        <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fa fa-yelp" aria-hidden="true"></i> </a>
+                    <li class="lbs-social-item yelp">
+                        <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fab fa-yelp" aria-hidden="true"></i> </a>
                     </li>
                 <?php    }
                 ?>

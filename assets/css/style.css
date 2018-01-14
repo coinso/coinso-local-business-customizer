@@ -34,7 +34,26 @@ img.lbs_logo{
     float: left;
     margin-right: 10px;
 }
-
+.lbs-list-inline li.lbs-social-item.facebook{
+    background-color: #3b5998;
+}
+.lbs-list-inline li.lbs-social-item.twitter{
+    background-color: #55acee;
+}
+.lbs-list-inline li.lbs-social-item.google-plus{
+    background-color: #dd4b39;
+}
+.lbs-list-inline li.lbs-social-item.yelp{
+    background-color: #bb0000;
+}
+.lbs-list-inline li.lbs-social-item a{
+    width: 30px;
+    height: 30px;
+    padding: 3px 5px;
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+}
 .lbs-brand__name{
     font-size: 1.4em;
     font-weight: bold;

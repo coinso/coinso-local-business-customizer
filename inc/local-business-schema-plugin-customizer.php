@@ -25,7 +25,6 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 30,
             'capability' => 'edit_theme_options',
             'theme_supports' => '',
-            'description' => '',
             'panel' => 'Local Business Information'
         ));
 //Brand Logo settings
@@ -41,19 +40,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'section' => 'Schema',
             'settings' => 'schema_logo'
         )));
-////Mobile Logo settings
-//    $wp_customize->add_setting('mobile_logo', array(
-//        'default' => get_template_directory_uri() . '/assets/img/logo.png',
-//        'type' => 'theme_mod',
-//        'sanitize_callback' => ''
-//    ));
-//
-////Mobile Logo control
-//    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mobile_logo', array(
-//        'label' => __('Mobile Logo', 'coinso_lbc'),
-//        'section' => 'Schema',
-//        'settings' => 'mobile_logo'
-//    )));
+
 //Schema Type settings
         $wp_customize->add_setting('schema_type', array(
             'default' => _x('LocalBusiness', 'coinso_lbc'),

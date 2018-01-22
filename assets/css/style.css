@@ -26,6 +26,11 @@ img.lbs_logo{
 .hours-list{
     list-style-type: none;
 }
+#appointment{
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 .lbs-list-inline{
     list-style-type: none;
 }

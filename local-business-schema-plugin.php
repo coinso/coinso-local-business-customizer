@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com
-Version: 1.5
+Version: 1.5.1
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -128,7 +128,12 @@ function coinso_schema_content($args, $content = null){
             <?php }
             if( get_theme_mod('schema_show_zip') ){?>
                 <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
-            <?php }?>
+            <?php }
+
+            if ( get_theme_mod('schema_show_street_address') ){?>
+                <span class="lbs-schema cap" id="appointment">* Office Services are by Appointment Only</span>
+            <?php } ?>
+
         </div>
     </div>
 </li>
@@ -144,6 +149,7 @@ function coinso_schema_content($args, $content = null){
         //Enable Multiple time table
         ?>
         <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
+
 
     </div>
 </li>

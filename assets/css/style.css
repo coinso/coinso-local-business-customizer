@@ -58,6 +58,12 @@ img.lbs_logo{
     display: inline-block;
     color: #fff;
     text-align: center;
+    font-size:2em;
+}
+@media screen and (max-width: 600px){
+    .lbs-list-inline li.lbs-social-item a{
+        font-size: 1.3em;
+    }
 }
 .lbs-brand__name{
     font-size: 1.4em;

@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com
-Version: 1.5.4
+Version: 1.6
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -228,13 +228,13 @@ function coinso_footer_schema_ld_json(){
             "openingHours": "<?php echo get_theme_mod( 'schema_opening_hours' ) ? get_theme_mod( 'schema_opening_hours' ) : 'Mo-Su 00:00-23:59'; ?>",
             "sameAs" : [
             <?php if ( get_theme_mod( 'facebook_url_field' ) ){ ?>
-                "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>",
+                "<?php echo get_theme_mod( 'facebook_url_field' ). ',' ? get_theme_mod( 'facebook_url_field' ). ',' : ''; ?>"
             <?php }
         if ( get_theme_mod( 'twitter_url_field' ) ){?>
-                "<?php echo get_theme_mod( 'twitter_url_field' ) ? get_theme_mod( 'twitter_url_field' ) : ''; ?>",
+                "<?php echo get_theme_mod( 'twitter_url_field' ). ',' ? get_theme_mod( 'twitter_url_field' ). ',' : ''; ?>"
             <?php }
         if ( get_theme_mod( 'google_plus_url_field' ) ){ ?>
-                "<?php echo get_theme_mod( 'google_plus_url_field' ) ? get_theme_mod( 'google_plus_url_field' ) : ''; ?>",
+                "<?php echo get_theme_mod( 'google_plus_url_field' ). ',' ? get_theme_mod( 'google_plus_url_field' ). ',' : ''; ?>"
             <?php }
         if ( get_theme_mod( 'yelp_url_field' ) ){ ?>
                 "<?php echo get_theme_mod( 'yelp_url_field' ) ? get_theme_mod( 'yelp_url_field' ) : ''; ?>"

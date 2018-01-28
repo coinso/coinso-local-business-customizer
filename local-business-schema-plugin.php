@@ -232,10 +232,10 @@ function coinso_footer_schema_ld_json(){
                 "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>"
             <?php }
         if ( get_theme_mod( 'twitter_url_field' ) ){?>
-                ,"<?php echo get_theme_mod( 'twitter_url_field' ) ? get_theme_mod( 'twitter_url_field' ) : ''; ?>",
+                ,"<?php echo get_theme_mod( 'twitter_url_field' ) ? get_theme_mod( 'twitter_url_field' ) : ''; ?>"
             <?php }
         if ( get_theme_mod( 'google_plus_url_field' ) ){ ?>
-                ,"<?php echo get_theme_mod( 'google_plus_url_field' ) ? get_theme_mod( 'google_plus_url_field' ) : ''; ?>",
+                ,"<?php echo get_theme_mod( 'google_plus_url_field' ) ? get_theme_mod( 'google_plus_url_field' ) : ''; ?>"
             <?php }
         if ( get_theme_mod( 'yelp_url_field' ) ){ ?>
                 ,"<?php echo get_theme_mod( 'yelp_url_field' ) ? get_theme_mod( 'yelp_url_field' ) : ''; ?>"

@@ -64,6 +64,7 @@ function coinso_register_schema_shortcode( ){
 function coinso_schema_content($args, $content = null){
     global $schema_atts;
     $schema_atts = shortcode_atts( array(
+        'url'           =>  get_home_url() ? get_home_url() : '',
         'type'          =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
         'brand'         =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
         'img'           =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
@@ -88,7 +89,7 @@ function coinso_schema_content($args, $content = null){
         <ul class="lbs-footer-list">
             <li>
                 <div class="lbs-footer-logo">
-                    <a itemprop="url" href="<?php echo get_home_url(); ?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ) ; ?>"  title="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>">
+                    <a itemprop="url" href="<?php echo $schema_atts['url']; ?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ) ; ?>"  title="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>">
                         <span itemprop="logo" itemtype="https://schema.org/ImageObject">
                             <img src="<?php echo  $schema_atts['img'] ;?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ); ?>" itemprop="image" class="lbs_logo">
                         </span>

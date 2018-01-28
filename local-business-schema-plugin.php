@@ -4,7 +4,7 @@ Plugin Name: Coinso Local Business Customizer
 Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
-Author URI: http://coinso.com
+Author URI: http://coinso.com/project/ido-barnea
 Version: 1.6
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -29,7 +29,7 @@ require_once( plugin_dir_path(__FILE__) . '/inc/local-business-schema-plugin-scr
 
 //1.1 register activation
 /*
- * Since Verion 1.0
+ * Since Version 1.0
  *
  */
 register_activation_hook(__FILE__, 'coinso_lbs_activate_plugin');

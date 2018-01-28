@@ -203,8 +203,9 @@ function coinso_schema_content($args, $content = null){
 function custom_shortcode_scripts() {
     global $post;
     if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'schema') ) {
-
-        add_action('wp_footer', 'coinso_footer_schema_ld_json');
+            if( is_front_page() ){
+                add_action('wp_footer', 'coinso_footer_schema_ld_json');
+            }
     }
 }
 function coinso_footer_schema_ld_json(){

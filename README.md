@@ -30,3 +30,10 @@ in Order to use the plugin for more than one location see Available Parameters b
 add the shortcode to the required city page and add the parameters inside the shortcode:<br/>
 [schema brand="New Brand Name" street="new street"]
 Save and review schema on [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/)
+
+
+# Change Log
+## v 2.0
+
+* Schema type input box replaced with select box by defined business type
+* Added Payment Methods input field

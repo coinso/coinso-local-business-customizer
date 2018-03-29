@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com/project/ido-barnea
-Version: 1.6
+Version: 2.0
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -64,21 +64,22 @@ function coinso_register_schema_shortcode( ){
 function coinso_schema_content($args, $content = null){
     global $schema_atts;
     $schema_atts = shortcode_atts( array(
-        'url'           =>  get_home_url() ? get_home_url() : '',
-        'type'          =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
-        'brand'         =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
-        'img'           =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
-        'description'   =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
-        'street'        =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
-        'city'          =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
-        'region'        =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
-        'zip'           =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
-        'phone'         =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
-        'hours'         =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
-        'facebook'      =>  get_theme_mod('facebook_url_field'),
-        'twitter'       =>  get_theme_mod('twitter_url_field'),
-        'gmb'           =>  get_theme_mod('google_plus_url_field'),
-        'yelp'          =>  get_theme_mod('yelp_url_field')
+        'url'               =>  get_home_url() ? get_home_url() : '',
+        'type'              =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
+        'brand'             =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
+        'img'               =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
+        'description'       =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
+        'street'            =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
+        'city'              =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
+        'region'            =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
+        'zip'               =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
+        'phone'             =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
+        'hours'             =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
+        'payment_methods'   =>  get_theme_mod('schema_payment_methods') ? get_theme_mod('schema_payment_methods') : '',
+        'facebook'          =>  get_theme_mod('facebook_url_field'),
+        'twitter'           =>  get_theme_mod('twitter_url_field'),
+        'gmb'               =>  get_theme_mod('google_plus_url_field'),
+        'yelp'              =>  get_theme_mod('yelp_url_field')
     ), $args);
     ob_start(); ?>
 
@@ -145,11 +146,21 @@ function coinso_schema_content($args, $content = null){
     </div>
 </li>
 <li class="lbs-inline-block">
-    <div class="lbs-footer-hours"><i class="far fa-clock" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours');?>
+    <div class="lbs-footer-hours"><i class="far fa-clock" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours: ');?>
         <?php $oh = explode(',', $schema_atts['hours']);
         //Enable Multiple time table
         ?>
         <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
+
+
+    </div>
+</li>
+<li class="lbs-inline-block">
+    <div class="lbs-footer-payment"><i class="far fa-credit-card" aria-hidden="true">&nbsp;</i><?php echo _e('Payment Methods: ');?>
+        <?php $pm = explode(',', $schema_atts['payment_methods']);
+        //Enable Multiple time table
+        ?>
+        <div itemprop="paymentAccepted"><?php echo "<span class='payment-itme'>" . implode('</span>, <span>', $pm) . "</span>";?></div>
 
 
     </div>
@@ -228,6 +239,7 @@ function coinso_footer_schema_ld_json(){
             "name": "<?php echo get_bloginfo( 'name' ); ?>",
             "telephone": "<?php echo get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890' ?>",
             "openingHours": "<?php echo get_theme_mod( 'schema_opening_hours' ) ? get_theme_mod( 'schema_opening_hours' ) : 'Mo-Su 00:00-23:59'; ?>",
+            "paymentAccepted":"<?php echo get_theme_mod( 'payment_methods' ) ? get_theme_mod( 'payment_methods' ) : 'Cash, Credit Card'; ?>",
             "sameAs" : [
             <?php if ( get_theme_mod( 'facebook_url_field' ) ){ ?>
                 "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>"

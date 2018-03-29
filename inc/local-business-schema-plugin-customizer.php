@@ -52,11 +52,18 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
         $wp_customize->add_control('schema_type', array(
             'label' => __('Schema Type', 'coinso_lbc'),
             'section' => 'Schema',
-            'priority' => 20
+            'priority' => 20,
+            'type'      =>  'select',
+            'choices'   =>  array(
+                'LoaclBusiness'         =>  _x('LocalBusiness', 'coinso_lbc'),
+                'Locksmith'             =>  _x('Locksmith', 'coinso_lbc'),
+                'AutomotiveBusiness'    =>  _x('AutomotiveBusiness', 'coinso_lbc'),
+
+            )
         ));
 //Brand Name settings
         $wp_customize->add_setting('schema_brand_name', array(
-            'default' => _x(get_bloginfo('name'), 'coinso_lbc'),
+            'default' => _x( get_bloginfo('name'), 'coinso_lbc'),
             'type' => 'theme_mod',
             'sanitize_callback' => ''
         ));
@@ -234,7 +241,19 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 20
         ));
 
+// Payment Methods Settings
+        $wp_customize->add_setting('schema_payment_methods', array(
+            'default' => _x('Cash, Credit card', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => ''
+        ));
 
+// Payment Methods Control
+        $wp_customize->add_control('schema_payment_methods', array(
+            'label' => __('Payment Methods', 'coinso_lbc'),
+            'section' => 'Schema',
+            'priority' => 20
+        ));
         /**
          * Social Section
          **/

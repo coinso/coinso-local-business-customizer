@@ -229,7 +229,7 @@ function coinso_footer_schema_ld_json(){
     <script type="application/ld+json">
             {
             "@context": "http://schema.org",
-            "@type": "<?php echo get_theme_mod( 'schema_type' ) ? get_theme_mod( 'schema_type' ) : 'localBusiness'; ?>",
+            "@type": "<?php echo get_theme_mod( 'schema_type' ) ? get_theme_mod( 'schema_type' ) : 'LocalBusiness'; ?>",
             "image": "<?php echo get_theme_mod( 'schema_logo' ) ? get_theme_mod( 'schema_logo' ) : get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?>",
             "hasMap": "<?php echo get_theme_mod( 'schema_map' ) ? get_theme_mod( 'schema_map' ) : ''; ?>",
             "address": {

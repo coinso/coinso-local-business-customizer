@@ -55,7 +55,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 20,
             'type'      =>  'select',
             'choices'   =>  array(
-                'LoaclBusiness'         =>  _x('LocalBusiness', 'coinso_lbc'),
+                'LocalBusiness'         =>  _x('LocalBusiness', 'coinso_lbc'),
                 'Locksmith'             =>  _x('Locksmith', 'coinso_lbc'),
                 'AutomotiveBusiness'    =>  _x('AutomotiveBusiness', 'coinso_lbc'),
 

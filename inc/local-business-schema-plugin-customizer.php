@@ -257,7 +257,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
 
 // Price Range Settings
         $wp_customize->add_setting('schema_price_range', array(
-            'default' => _x('$$$', 'coinso_lbc'),
+            'default' => _x('USD', 'coinso_lbc'),
             'type' => 'theme_mod',
             'sanitize_callback' => ''
         ));

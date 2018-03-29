@@ -33,8 +33,22 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 
 # Change Log
-## v 2.0
+## V 2.0
 
-* Schema type input box replaced with select box by defined business type
-* Added Payment Methods input field
-* Added Accepted currency field
+* Schema type input box replaced with select box by defined business type (LocalBusiness, Locksmith, AutomotiveBusiness)<br>
+* Added Payment Methods input text, add payment methods, seperate with comma (',')<br>
+* Added Accepted currency input text, add accepted currency either by symbol ($), or by name('USD').<br>
+
+## V 1.0
+
+Local Business Schema Fields
+Schema Type: input text, add schema type relevant to your business type<br> 
+Logo: img, Select Brand's logo img<br>
+Brand name: input text, Add Brand name<br>
+Brand Description: input text, Add Brand description<br>
+Phone number: input text, Add Brand's main phone number<br>
+Street Address: input text, Add street address. select checkbox to show field's value on the front end<br>
+City Name: input text, Add city name. select checkbox to show field's value on the front end<br>
+Zip Code: input text, Add zip code. select checkbox to show field's value on the front end<br>
+Region: input text, Add region name. select checkbox to show field's value on the front end<br>
+Opening Hours: input text, Add opening hours and days by this format 'Mo-Su 00:00-23:59'. For multiple Hours, separate with comma (',')<br>

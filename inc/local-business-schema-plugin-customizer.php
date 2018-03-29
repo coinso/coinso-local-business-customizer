@@ -254,6 +254,20 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'section' => 'Schema',
             'priority' => 20
         ));
+
+// Price Range Settings
+        $wp_customize->add_setting('schema_price_range', array(
+            'default' => _x('$$$', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => ''
+        ));
+
+// Price Range Control
+        $wp_customize->add_control('schema_price_range', array(
+            'label' => __('Price Range', 'coinso_lbc'),
+            'section' => 'Schema',
+            'priority' => 20
+        ));
         /**
          * Social Section
          **/

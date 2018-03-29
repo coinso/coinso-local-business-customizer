@@ -64,22 +64,23 @@ function coinso_register_schema_shortcode( ){
 function coinso_schema_content($args, $content = null){
     global $schema_atts;
     $schema_atts = shortcode_atts( array(
-        'url'               =>  get_home_url() ? get_home_url() : '',
-        'type'              =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
-        'brand'             =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
-        'img'               =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
-        'description'       =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
-        'street'            =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
-        'city'              =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
-        'region'            =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
-        'zip'               =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
-        'phone'             =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
-        'hours'             =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
-        'payment_methods'   =>  get_theme_mod('schema_payment_methods') ? get_theme_mod('schema_payment_methods') : '',
-        'facebook'          =>  get_theme_mod('facebook_url_field'),
-        'twitter'           =>  get_theme_mod('twitter_url_field'),
-        'gmb'               =>  get_theme_mod('google_plus_url_field'),
-        'yelp'              =>  get_theme_mod('yelp_url_field')
+        'url'                   =>  get_home_url() ? get_home_url() : '',
+        'type'                  =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
+        'brand'                 =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
+        'img'                   =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
+        'description'           =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
+        'street'                =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
+        'city'                  =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
+        'region'                =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
+        'zip'                   =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
+        'phone'                 =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
+        'hours'                 =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
+        'payment_methods'       =>  get_theme_mod('schema_payment_methods') ? get_theme_mod('schema_payment_methods') : '',
+        'price_range'           =>  get_theme_mod('schema_price_range') ? get_theme_mod('schema_price_range') : 'USD',
+        'facebook'              =>  get_theme_mod('facebook_url_field'),
+        'twitter'               =>  get_theme_mod('twitter_url_field'),
+        'gmb'                   =>  get_theme_mod('google_plus_url_field'),
+        'yelp'                  =>  get_theme_mod('yelp_url_field')
     ), $args);
     ob_start(); ?>
 
@@ -160,9 +161,12 @@ function coinso_schema_content($args, $content = null){
         <?php $pm = explode(',', $schema_atts['payment_methods']);
         //Enable Multiple time table
         ?>
-        <div itemprop="paymentAccepted"><?php echo "<span class='payment-itme'>" . implode('</span>, <span>', $pm) . "</span>";?></div>
-
-
+        <div itemprop="paymentAccepted"><?php echo "<span class='payment-item'>" . implode('</span>, <span>', $pm) . "</span>";?></div>
+    </div>
+</li>
+<li class="lbs-inline-block">
+    <div class="lbs-footer-price"><i class="far fa-usd" aria-hidden="true">&nbsp;</i><?php echo _e('Accepted Currency: ');?>
+        <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e($schema_atts['price_range']) ?></span>
     </div>
 </li>
 

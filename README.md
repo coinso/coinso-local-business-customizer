@@ -37,3 +37,4 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 * Schema type input box replaced with select box by defined business type
 * Added Payment Methods input field
+* Added Accepted currency field

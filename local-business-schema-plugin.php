@@ -244,6 +244,7 @@ function coinso_footer_schema_ld_json(){
             "telephone": "<?php echo get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890' ?>",
             "openingHours": "<?php echo get_theme_mod( 'schema_opening_hours' ) ? get_theme_mod( 'schema_opening_hours' ) : 'Mo-Su 00:00-23:59'; ?>",
             "paymentAccepted":"<?php echo get_theme_mod( 'payment_methods' ) ? get_theme_mod( 'payment_methods' ) : 'Cash, Credit Card'; ?>",
+            "priceRange": "<?php echo get_theme_mod( 'price_range' ) ? get_theme_mod( 'price_range' ) : 'USD'; ?>",
             "sameAs" : [
             <?php if ( get_theme_mod( 'facebook_url_field' ) ){ ?>
                 "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>"

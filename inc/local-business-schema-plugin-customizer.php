@@ -268,6 +268,21 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'section' => 'Schema',
             'priority' => 20
         ));
+// Link to Location Settings
+        $wp_customize->add_setting('hasMap', array(
+            'default' => _x('37.1843034', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => ''
+        ));
+
+// Link to Location Control
+        $wp_customize->add_control('hasMap', array(
+            'label' => __('Add Long / Lat', 'coinso_lbc'),
+            'description'   =>  __('Separeta with ,', 'coinso_lbc'),
+            'section' => 'Schema',
+            'priority' => 20
+        ));
+
         /**
          * Social Section
          **/

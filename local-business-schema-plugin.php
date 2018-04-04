@@ -80,7 +80,8 @@ function coinso_schema_content($args, $content = null){
         'facebook'              =>  get_theme_mod('facebook_url_field'),
         'twitter'               =>  get_theme_mod('twitter_url_field'),
         'gmb'                   =>  get_theme_mod('google_plus_url_field'),
-        'yelp'                  =>  get_theme_mod('yelp_url_field')
+        'yelp'                  =>  get_theme_mod('yelp_url_field'),
+        'map'                   =>  get_theme_mod('hasMap'),
     ), $args);
     ob_start(); ?>
 
@@ -118,8 +119,14 @@ function coinso_schema_content($args, $content = null){
         <div class="lbs-description" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 
             <?php
-            if( get_theme_mod('schema_show_street_address') ){?>
-                <i class="fas fa-home" aria-hidden="true"> </i>
+            if( get_theme_mod('schema_show_street_address') ){
+                if ( get_theme_mod('hasMap')){ ?>
+                    <a href="https://www.google.com/maps/@<?php echo get_theme_mod( 'hasMap' );?>" title="Click to see location on the map" target="_blank">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
+                    </a>
+                <?php } else { ?>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
+                 <?php }   ?>
                 <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo esc_html_e($schema_atts['street']); ?></span>
             <?php }
 
@@ -129,11 +136,11 @@ function coinso_schema_content($args, $content = null){
             if( get_theme_mod('schema_show_region') ){ ?>
                 <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo  esc_html_e($schema_atts['region']) ?></span>
             <?php }
-            if( get_theme_mod('schema_show_zip') ){?>
+            if( get_theme_mod('schema_show_zip') ){ ?>
                 <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
             <?php }
 
-            if ( get_theme_mod('schema_show_street_address') ){?>
+            if ( get_theme_mod('schema_show_street_address') ){ ?>
                 <span class="lbs-schema cap" id="appointment">* Office Services are by Appointment Only</span>
             <?php } ?>
 
@@ -165,7 +172,7 @@ function coinso_schema_content($args, $content = null){
     </div>
 </li>
 <li class="lbs-inline-block">
-    <div class="lbs-footer-price"><i class="far fa-usd" aria-hidden="true">&nbsp;</i><?php echo _e('Accepted Currency: ');?>
+    <div class="lbs-footer-price"><i class="fas fa-dollar-sign" aria-hidden="true">&nbsp;</i><?php echo _e('Accepted Currency: ');?>
         <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e( $schema_atts['price_range'] ); ?></span>
     </div>
 </li>
@@ -232,7 +239,7 @@ function coinso_footer_schema_ld_json(){
             "@context": "http://schema.org",
             "@type": "<?php echo get_theme_mod( 'schema_type' ) ? get_theme_mod( 'schema_type' ) : 'LocalBusiness'; ?>",
             "image": "<?php echo get_theme_mod( 'schema_logo' ) ? get_theme_mod( 'schema_logo' ) : get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?>",
-            "hasMap": "<?php echo get_theme_mod( 'schema_map' ) ? get_theme_mod( 'schema_map' ) : ''; ?>",
+            "hasMap": "<?php echo 'https://www.google.com/maps/'. get_theme_mod( 'hasMap' ) ? 'https://www.google.com/maps/'. get_theme_mod( 'hasMap' ) : ''; ?>",
             "address": {
             "@type": "PostalAddress",
             "streetAddress": "<?php echo get_theme_mod( 'schema_street_address' ) ? get_theme_mod( 'schema_street_address' ) : 'Street Name' ?>",

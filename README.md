@@ -13,23 +13,28 @@ At the homepage you will get 2 types of structured data - html and ld+json.
 On inner pages you'll get only html
 in Order to use the plugin for more than one location see Available Parameters bellow
 ## Available Shortcode Parameters
+
 ### Brand name and description
 * brand
 * description
+
 #### Address
 * street
 * city
 * region
 * zip
+
 ### General info
 * phone
 * hours
+* map
 
 ### Social
 * facebook
 * twitter
 * gmb
 * yelp
+
 ## How to use Parameters in shortcode?
 
 add the shortcode to the required city page and add the parameters inside the shortcode:<br/>
@@ -42,6 +47,7 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 ## V 2.1
 - ld/json script to load on home page, only if the schema shortcode exists in the page.
 - social media attributes for local pages. Each profile can be changed within the schema shortcode
+- New Field: Long / Lat: Input text, Add your business longitude / latitude values form google maps 
 
 ## V 2.0
 

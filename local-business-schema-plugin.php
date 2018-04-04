@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com/project/ido-barnea
-Version: 2.0
+Version: 2.1
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -224,7 +224,8 @@ function custom_shortcode_scripts() {
     }
 }
 function coinso_footer_schema_ld_json(){
-    if( is_front_page() ) :
+    global $post;
+    if( is_front_page() && has_shortcode( $post->post_content, 'schema') ) :
     ob_start(); ?>
     <script type="application/ld+json">
             {

@@ -25,6 +25,11 @@ in Order to use the plugin for more than one location see Available Parameters b
 * phone
 * hours
 
+### Social
+* facebook
+* twitter
+* gmb
+* yelp
 ## How to use Parameters in shortcode?
 
 add the shortcode to the required city page and add the parameters inside the shortcode:<br/>
@@ -33,6 +38,11 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 
 # Change Log
+
+## V 2.1
+- ld/json script to load on home page, only if the schema shortcode exists in the page.
+- social media attributes for local pages. Each profile can be changed within the schema shortcode
+
 ## V 2.0
 
 * Schema type input box replaced with select box by defined business type (LocalBusiness, Locksmith, AutomotiveBusiness)<br>

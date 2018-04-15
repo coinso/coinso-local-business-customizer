@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com/project/ido-barnea
-Version: 2.1
+Version: 2.1.1
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -239,7 +239,7 @@ function coinso_footer_schema_ld_json(){
             "@context": "http://schema.org",
             "@type": "<?php echo get_theme_mod( 'schema_type' ) ? get_theme_mod( 'schema_type' ) : 'LocalBusiness'; ?>",
             "image": "<?php echo get_theme_mod( 'schema_logo' ) ? get_theme_mod( 'schema_logo' ) : get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?>",
-            "hasMap": "<?php echo 'https://www.google.com/maps/@'. get_theme_mod( 'hasMap' ) ? 'https://www.google.com/maps/'. get_theme_mod( 'hasMap' ) : ''; ?>",
+            "hasMap": "<?php echo 'https://www.google.com/maps/@'. get_theme_mod( 'hasMap' ) ? 'https://www.google.com/maps/@'. get_theme_mod( 'hasMap' ) : ''; ?>",
             "address": {
             "@type": "PostalAddress",
             "streetAddress": "<?php echo get_theme_mod( 'schema_street_address' ) ? get_theme_mod( 'schema_street_address' ) : 'Street Name' ?>",

@@ -121,7 +121,7 @@ function coinso_schema_content($args, $content = null){
             <?php
             if( get_theme_mod('schema_show_street_address') ){
                 if ( get_theme_mod('hasMap')){ ?>
-                    <a href="https://www.google.com/maps/@<?php echo get_theme_mod( 'hasMap' );?>" title="Click to see location on the map" target="_blank">
+                    <a href="https://www.google.com/maps/@<?php echo get_theme_mod( 'hasMap' );?>,10z" title="Click to see location on the map" target="_blank">
                         <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
                     </a>
                 <?php } else { ?>

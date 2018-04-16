@@ -105,113 +105,109 @@ function coinso_schema_content($args, $content = null){
                     <div class="lbs-schema-cap">
                         <span itemprop="name" class="lbs-brand__name">
                             <?php echo esc_html_e( $schema_atts['brand'] ); ?>
-</span>
-</div>
-<div class="lbs-schema-cap">
-    <span itemprop="description" class="lbs-brand__desc">
-        <?php echo esc_html_e( $schema_atts['description'] );?>
-    </span>
-</div>
-</div>
-</li>
-<li class="lbs-inline-block">
-    <div class="lbs-footer-address">
-        <div class="lbs-description" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        </span>
+                    </div>
+                    <div class="lbs-schema-cap">
+                        <span itemprop="description" class="lbs-brand__desc">
+                            <?php echo esc_html_e( $schema_atts['description'] );?>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li class="lbs-inline-block">
+                <div class="lbs-footer-address">
+                    <div class="lbs-description" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 
-            <?php
-            if( get_theme_mod('schema_show_street_address') ){
-                if ( $schema_atts['map']){ ?>
-                    <a href="https://www.google.com/maps/@<?php echo $schema_atts['map'] ? $schema_atts['map'] : get_theme_mod( 'hasMap' );?>,10z" title="Click to see location on the map" target="_blank">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
-                    </a>
-                <?php } else { ?>
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
-                 <?php }   ?>
-                <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo esc_html_e($schema_atts['street']); ?></span>
-            <?php }
+                        <?php
+                        if( get_theme_mod('schema_show_street_address') ){
+                            if ( $schema_atts['map']){ ?>
+                                <a href="https://www.google.com/maps/@<?php echo $schema_atts['map'];?>,10z" title="Click to see location on the map" target="_blank">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
+                                </a>
+                            <?php } else { ?>
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
+                             <?php }   ?>
+                            <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo esc_html_e($schema_atts['street']); ?></span>
+                        <?php }
 
-            if( get_theme_mod('schema_show_city')){ ?>
-                <span class="lbs-schema-cap" itemprop="addressLocality"><?php echo  esc_html_e($schema_atts['city']);?></span>
-            <?php }
-            if( get_theme_mod('schema_show_region') ){ ?>
-                <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo  esc_html_e($schema_atts['region']) ?></span>
-            <?php }
-            if( get_theme_mod('schema_show_zip') ){ ?>
-                <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
-            <?php }
+                        if( get_theme_mod('schema_show_city')){ ?>
+                            <span class="lbs-schema-cap" itemprop="addressLocality"><?php echo  esc_html_e($schema_atts['city']);?></span>
+                        <?php }
+                        if( get_theme_mod('schema_show_region') ){ ?>
+                            <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo  esc_html_e($schema_atts['region']) ?></span>
+                        <?php }
+                        if( get_theme_mod('schema_show_zip') ){ ?>
+                            <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
+                        <?php }
 
-            if ( get_theme_mod('schema_show_street_address') ){ ?>
-                <span class="lbs-schema cap" id="appointment">* Office Services are by Appointment Only</span>
-            <?php } ?>
+                        if ( get_theme_mod('schema_show_street_address') ){ ?>
+                            <span class="lbs-schema cap" id="appointment">* Office Services are by Appointment Only</span>
+                        <?php } ?>
 
+                    </div>
+                </div>
+            </li>
+            <li class="lbs-inline-block">
+                <div class="lbs-footer-phone"><i class="fas fa-phone" aria-hidden="true"> </i>
+                    <span itemprop="telephone"><?php echo  esc_html_e($schema_atts['phone']) ?></span>
+
+                </div>
+            </li>
+            <li class="lbs-inline-block">
+                <div class="lbs-footer-hours"><i class="far fa-clock" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours: ');?>
+                    <?php $oh = explode(',', $schema_atts['hours']);
+                    //Enable Multiple time table
+                    ?>
+                    <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
+
+
+                </div>
+            </li>
+            <li class="lbs-inline-block">
+                <div class="lbs-footer-payment"><i class="far fa-credit-card" aria-hidden="true">&nbsp;</i><?php echo _e('Payment Methods: ');?>
+                    <?php $pm = explode(',', $schema_atts['payment_methods']);
+                    //Enable Multiple time table
+                    ?>
+                    <div itemprop="paymentAccepted"><?php echo "<span class='payment-item'>" . implode('</span>, <span>', $pm) . "</span>";?></div>
+                </div>
+            </li>
+            <li class="lbs-inline-block">
+                <div class="lbs-footer-price"><i class="fas fa-dollar-sign" aria-hidden="true">&nbsp;</i><?php echo _e('Accepted Currency: ');?>
+                    <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e( $schema_atts['price_range'] ); ?></span>
+                </div>
+            </li>
+        </ul>
+        <div class="lbs-footer-social-icons">
+            <ul class="lbs-list-inline">
+                <?php $fb_link = esc_url( $schema_atts['facebook'] );
+                if($fb_link){?>
+                    <li class="lbs-social-item facebook">
+                        <a href="<?php echo $fb_link;?>" target="_blank" rel="nofollow"><i class="fab fa-facebook-f" aria-hidden="true"></i> </a>
+                    </li>
+                <?php     }
+                $twitter_link = esc_url( $schema_atts['twitter'] );
+                if($twitter_link){?>
+                    <li class="lbs-social-item twitter">
+                        <a href="<?php echo $twitter_link;?>" target="_blank" rel="nofollow"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
+                    </li>
+                <?php    }
+                $google_plus_link = esc_url( $schema_atts['gmb'] );
+                if($google_plus_link){ ?>
+                    <li class="lbs-social-item google-plus">
+                        <a href="<?php echo $google_plus_link;?>" target="_blank" rel="nofollow"><i class="fab fa-google-plus" aria-hidden="true"></i> </a>
+                    </li>
+                <?php }
+                $yelp_link = esc_url( $schema_atts['yelp'] );
+                if($yelp_link){?>
+                    <li class="lbs-social-item yelp">
+                        <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fab fa-yelp" aria-hidden="true"></i> </a>
+                    </li>
+                <?php    }
+                ?>
+            </ul>
         </div>
+        <div class="clear"></div>
     </div>
-</li>
-<li class="lbs-inline-block">
-    <div class="lbs-footer-phone"><i class="fas fa-phone" aria-hidden="true"> </i>
-        <span itemprop="telephone"><?php echo  esc_html_e($schema_atts['phone']) ?></span>
-
-    </div>
-</li>
-<li class="lbs-inline-block">
-    <div class="lbs-footer-hours"><i class="far fa-clock" aria-hidden="true">&nbsp;</i><?php echo _e('Opening Hours: ');?>
-        <?php $oh = explode(',', $schema_atts['hours']);
-        //Enable Multiple time table
-        ?>
-        <time itemprop="openingHours" datetime="<?php echo implode(',', $oh) ;?>"><?php echo "<ul class='hours-list'><li>" . implode('</li><li>', $oh) . "</li></ul>";?></time>
-
-
-    </div>
-</li>
-<li class="lbs-inline-block">
-    <div class="lbs-footer-payment"><i class="far fa-credit-card" aria-hidden="true">&nbsp;</i><?php echo _e('Payment Methods: ');?>
-        <?php $pm = explode(',', $schema_atts['payment_methods']);
-        //Enable Multiple time table
-        ?>
-        <div itemprop="paymentAccepted"><?php echo "<span class='payment-item'>" . implode('</span>, <span>', $pm) . "</span>";?></div>
-    </div>
-</li>
-<li class="lbs-inline-block">
-    <div class="lbs-footer-price"><i class="fas fa-dollar-sign" aria-hidden="true">&nbsp;</i><?php echo _e('Accepted Currency: ');?>
-        <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e( $schema_atts['price_range'] ); ?></span>
-    </div>
-</li>
-
-</ul>
-<div class="lbs-footer-social-icons">
-    <ul class="lbs-list-inline">
-        <?php $fb_link = esc_url( $schema_atts['facebook'] );
-        if($fb_link){?>
-            <li class="lbs-social-item facebook">
-                <a href="<?php echo $fb_link;?>" target="_blank" rel="nofollow"><i class="fab fa-facebook-f" aria-hidden="true"></i> </a>
-            </li>
-        <?php     }
-        $twitter_link = esc_url( $schema_atts['twitter'] );
-        if($twitter_link){?>
-            <li class="lbs-social-item twitter">
-                <a href="<?php echo $twitter_link;?>" target="_blank" rel="nofollow"><i class="fab fa-twitter" aria-hidden="true"></i> </a>
-            </li>
-        <?php    }
-        $google_plus_link = esc_url( $schema_atts['gmb'] );
-        if($google_plus_link){ ?>
-            <li class="lbs-social-item google-plus">
-                <a href="<?php echo $google_plus_link;?>" target="_blank" rel="nofollow"><i class="fab fa-google-plus" aria-hidden="true"></i> </a>
-            </li>
-        <?php }
-        $yelp_link = esc_url( $schema_atts['yelp'] );
-        if($yelp_link){?>
-            <li class="lbs-social-item yelp">
-                <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fab fa-yelp" aria-hidden="true"></i> </a>
-            </li>
-        <?php    }
-        ?>
-    </ul>
-</div>
-<div class="clear"></div>
-</div>
-
-
-
 </div><!-- #footer-disclaimer -->
 
   <?php  return ob_get_clean();

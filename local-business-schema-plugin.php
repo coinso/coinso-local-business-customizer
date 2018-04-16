@@ -220,46 +220,65 @@ function coinso_schema_content($args, $content = null){
  */
 function custom_shortcode_scripts() {
     global $post;
-    if( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'schema') ) {
+    if( is_a( $post, 'WP_Post' ) && shortcode_exists('schema') ) {
 
                 add_action('wp_footer', 'coinso_footer_schema_ld_json');
 
     }
 }
-function coinso_footer_schema_ld_json(){
-    global $post;
-    if( is_front_page() && has_shortcode( $post->post_content, 'schema') ) :
+function coinso_footer_schema_ld_json($args){
+    $schema_args = shortcode_atts( array(
+        'url'                   =>  get_home_url() ? get_home_url() : '',
+        'type'                  =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
+        'brand'                 =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
+        'img'                   =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
+        'description'           =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
+        'street'                =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
+        'city'                  =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
+        'region'                =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
+        'zip'                   =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
+        'phone'                 =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
+        'hours'                 =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
+        'payment_methods'       =>  get_theme_mod('schema_payment_methods') ? get_theme_mod('schema_payment_methods') : '',
+        'price_range'           =>  get_theme_mod('schema_price_range') ? get_theme_mod('schema_price_range') : 'USD',
+        'facebook'              =>  get_theme_mod('facebook_url_field'),
+        'twitter'               =>  get_theme_mod('twitter_url_field'),
+        'gmb'                   =>  get_theme_mod('google_plus_url_field'),
+        'yelp'                  =>  get_theme_mod('yelp_url_field'),
+        'map'                   =>  get_theme_mod('hasMap'),
+    ),$args);
+
     ob_start(); ?>
     <script type="application/ld+json">
             {
             "@context": "http://schema.org",
-            "@type": "<?php echo get_theme_mod( 'schema_type' ) ? get_theme_mod( 'schema_type' ) : 'LocalBusiness'; ?>",
-            "image": "<?php echo get_theme_mod( 'schema_logo' ) ? get_theme_mod( 'schema_logo' ) : get_stylesheet_directory_uri() . '/assets/img/logo.png'; ?>",
-            "hasMap": "<?php echo 'https://www.google.com/maps/@'. get_theme_mod( 'hasMap' ) ? 'https://www.google.com/maps/@'. get_theme_mod( 'hasMap' ) : ''; ?>",
+            "@type": "<?php echo $schema_args['type']; ?>",
+            "image": "<?php echo $schema_args['img']; ?>",
+            "hasMap": "<?php echo 'https://www.google.com/maps/@'. $schema_args['map']; ?>",
             "address": {
             "@type": "PostalAddress",
-            "streetAddress": "<?php echo get_theme_mod( 'schema_street_address' ) ? get_theme_mod( 'schema_street_address' ) : 'Street Name' ?>",
-            "addressLocality": "<?php echo get_theme_mod( 'schema_city' ) ? get_theme_mod( 'schema_city' ) : 'City Name' ?>",
-            "addressRegion": "<?php echo get_theme_mod( 'schema_region' ) ? get_theme_mod( 'schema_region' ) : 'Region' ?>",
-            "postalCode":"<?php echo get_theme_mod( 'schema_zip' ) ? get_theme_mod( 'schema_zip' ) : 'Zip Code' ?>"
+            "streetAddress": "<?php echo $schema_args['street']; ?>",
+            "addressLocality": "<?php $schema_args['city'] ?>",
+            "addressRegion": "<?php echo $schema_args['region'] ?>",
+            "postalCode":"<?php echo $schema_args['zip'] ?>"
             },
-            "description": "<?php echo get_theme_mod( 'schema_brand_description' ) ? get_theme_mod( 'schema_brand_description' ) : get_bloginfo( 'description' ); ?>",
-            "name": "<?php echo get_bloginfo( 'name' ); ?>",
-            "telephone": "<?php echo get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890' ?>",
-            "openingHours": "<?php echo get_theme_mod( 'schema_opening_hours' ) ? get_theme_mod( 'schema_opening_hours' ) : 'Mo-Su 00:00-23:59'; ?>",
-            "paymentAccepted":"<?php echo get_theme_mod( 'schema_payment_methods' ) ? get_theme_mod( 'schema_payment_methods' ) : 'Cash, Credit Card'; ?>",
-            "priceRange": "<?php echo get_theme_mod( 'schema_price_range' ) ? get_theme_mod( 'schema_price_range' ) : 'USD'; ?>",
+            "description": "<?php echo $schema_args['description']; ?>",
+            "name": "<?php echo $schema_args['brand']; ?>",
+            "telephone": "<?php echo $schema_args['phone'] ?>",
+            "openingHours": "<?php echo $schema_args['hours']; ?>",
+            "paymentAccepted":"<?php echo $schema_args['payment_methods']; ?>",
+            "priceRange": "<?php echo $schema_args['price_range']; ?>",
             "sameAs" : [
             <?php if ( get_theme_mod( 'facebook_url_field' ) ){ ?>
                 "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>"
             <?php }
-        if ( get_theme_mod( 'twitter_url_field' ) ){?>
+                    if ( get_theme_mod( 'twitter_url_field' ) ){?>
                 ,"<?php echo get_theme_mod( 'twitter_url_field' ) ? get_theme_mod( 'twitter_url_field' ) : ''; ?>"
             <?php }
-        if ( get_theme_mod( 'google_plus_url_field' ) ){ ?>
+                    if ( get_theme_mod( 'google_plus_url_field' ) ){ ?>
                 ,"<?php echo get_theme_mod( 'google_plus_url_field' ) ? get_theme_mod( 'google_plus_url_field' ) : ''; ?>"
             <?php }
-        if ( get_theme_mod( 'yelp_url_field' ) ){ ?>
+                    if ( get_theme_mod( 'yelp_url_field' ) ){ ?>
                 ,"<?php echo get_theme_mod( 'yelp_url_field' ) ? get_theme_mod( 'yelp_url_field' ) : ''; ?>"
             <?php } ?>
             ]
@@ -270,7 +289,7 @@ function coinso_footer_schema_ld_json(){
     <?php
 
     echo ob_get_clean();
-    endif;
+
 }
 
 

@@ -46,7 +46,7 @@ add_action('init', 'coinso_register_schema_shortcode');
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'coinso_add_action_links' );
 
 //activate json/ld script if schema is showing on the page
-add_action('wp_head','coinso_footer_schema_ld_json');
+add_action( 'wp_footer','custom_shortcode_scripts');
 
 //Shorcodes
 /*
@@ -65,23 +65,24 @@ function coinso_schema_content($args, $content = null){
     global $schema_atts;
     $schema_atts = shortcode_atts( array(
         'url'                   =>  get_home_url() ? get_home_url() : '',
-        'type'                  =>  get_theme_mod('schema_type') ? get_theme_mod('schema_type') : 'localBusiness',
-        'brand'                 =>  get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'),
-        'img'                   =>  get_theme_mod('schema_logo') ? get_theme_mod('schema_logo') : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
-        'description'           =>  get_theme_mod('schema_brand_description') ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
-        'street'                =>  get_theme_mod('schema_street_address') ? get_theme_mod('schema_street_address') : 'Street Name',
-        'city'                  =>  get_theme_mod('schema_city') ? get_theme_mod('schema_city') : 'City Name',
-        'region'                =>  get_theme_mod('schema_region') ? get_theme_mod('schema_region') : 'Region',
-        'zip'                   =>  get_theme_mod('schema_zip') ? get_theme_mod('schema_zip') : 'Zip Code',
-        'phone'                 =>  get_theme_mod('schema_phone_number') ? get_theme_mod('schema_phone_number') : '(123) 456-7890',
-        'hours'                 =>  get_theme_mod('schema_opening_hours') ? get_theme_mod('schema_opening_hours') : '',
-        'payment_methods'       =>  get_theme_mod('schema_payment_methods') ? get_theme_mod('schema_payment_methods') : '',
-        'price_range'           =>  get_theme_mod('schema_price_range') ? get_theme_mod('schema_price_range') : 'USD',
-        'facebook'              =>  get_theme_mod('facebook_url_field'),
-        'twitter'               =>  get_theme_mod('twitter_url_field'),
-        'gmb'                   =>  get_theme_mod('google_plus_url_field'),
-        'yelp'                  =>  get_theme_mod('yelp_url_field'),
-        'map'                   =>  get_theme_mod('hasMap'),
+        'type'                  =>  get_theme_mod('schema_type')                ? get_theme_mod('schema_type')              : 'localBusiness',
+        'brand'                 =>  get_theme_mod('schema_brand_name')          ? get_theme_mod('schema_brand_name')        : get_bloginfo('name'),
+        'img'                   =>  get_theme_mod('schema_logo')                ? get_theme_mod('schema_logo')              : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
+        'description'           =>  get_theme_mod('schema_brand_description')   ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
+        'street'                =>  get_theme_mod('schema_street_address')      ? get_theme_mod('schema_street_address')    : _e( 'Street Name', 'coinso_lbc'),
+        'city'                  =>  get_theme_mod('schema_city')                ? get_theme_mod('schema_city')              : _e('City Name', 'coinso_lbc'),
+        'region'                =>  get_theme_mod('schema_region')              ? get_theme_mod('schema_region')            : 'Region',
+        'zip'                   =>  get_theme_mod('schema_zip')                 ? get_theme_mod('schema_zip')               : 'Zip Code',
+        'phone'                 =>  get_theme_mod('schema_phone_number')        ? get_theme_mod('schema_phone_number')      : '(123) 456-7890',
+        'hours'                 =>  get_theme_mod('schema_opening_hours')       ? get_theme_mod('schema_opening_hours')     : '',
+        'payment_methods'       =>  get_theme_mod('schema_payment_methods')     ? get_theme_mod('schema_payment_methods')   : '',
+        'price_range'           =>  get_theme_mod('schema_price_range')         ? get_theme_mod('schema_price_range')       : 'USD',
+        'facebook'              =>  get_theme_mod('facebook_url_field')         ? get_theme_mod('facebook_url_field')       : '',
+        'twitter'               =>  get_theme_mod('twitter_url_field')          ? get_theme_mod('twitter_url_field')        : '',
+        'gmb'                   =>  get_theme_mod('google_plus_url_field')      ? get_theme_mod('google_plus_url_field')    : '',
+        'yelp'                  =>  get_theme_mod('yelp_url_field')             ? get_theme_mod('yelp_url_field')           : '',
+        'linkedin'              =>  get_theme_mod('linkedin_url_field')         ? get_theme_mod(  'linkedin_url_field')     : '',
+        'map'                   =>  get_theme_mod('hasMap')                     ? get_theme_mod('hasMap')                   : '',
     ), $args);
     ob_start(); ?>
 
@@ -203,7 +204,13 @@ function coinso_schema_content($args, $content = null){
                         <a href="<?php echo $yelp_link;?>" target="_blank" rel="nofollow"><i class="fab fa-yelp" aria-hidden="true"></i> </a>
                     </li>
                 <?php    }
-                ?>
+                $linkedin_link = esc_url( $schema_atts['linkedin'] );
+                if($linkedin_link){?>
+                    <li class="lbs-social-item linkedin">
+                        <a href="<?php echo $linkedin_link;?>" target="_blank" rel="nofollow"><i class="fab fa-linkedin-in" aria-hidden="true"></i> </a>
+                    </li>
+                <?php    } ?>
+
             </ul>
         </div>
         <div class="clear"></div>
@@ -219,13 +226,14 @@ function coinso_schema_content($args, $content = null){
  * Check if the schema short code used in a page
  */
 function custom_shortcode_scripts() {
-    global $post;
-    if( is_a( $post, 'WP_Post' ) && shortcode_exists('schema') ) {
 
-                add_action('wp_footer', 'coinso_footer_schema_ld_json');
 
-    }
+        echo coinso_footer_schema_ld_json($args = null);
+
+
+
 }
+
 function coinso_footer_schema_ld_json($args){
     $schema_args = shortcode_atts( array(
         'url'                   =>  get_home_url() ? get_home_url() : '',
@@ -245,6 +253,7 @@ function coinso_footer_schema_ld_json($args){
         'twitter'               =>  get_theme_mod('twitter_url_field'),
         'gmb'                   =>  get_theme_mod('google_plus_url_field'),
         'yelp'                  =>  get_theme_mod('yelp_url_field'),
+        'linkedin'              =>  get_theme_mod('linkedin_url_field'),
         'map'                   =>  get_theme_mod('hasMap'),
     ),$args);
 
@@ -252,36 +261,35 @@ function coinso_footer_schema_ld_json($args){
     <script type="application/ld+json">
             {
             "@context": "http://schema.org",
-            "@type": "<?php echo $schema_args['type']; ?>",
-            "image": "<?php echo $schema_args['img']; ?>",
-            "hasMap": "<?php echo 'https://www.google.com/maps/@'. $schema_args['map']; ?>",
-            "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "<?php echo $schema_args['street']; ?>",
-            "addressLocality": "<?php $schema_args['city'] ?>",
-            "addressRegion": "<?php echo $schema_args['region'] ?>",
-            "postalCode":"<?php echo $schema_args['zip'] ?>"
+            "@type"             : "<?php echo $schema_args['type']; ?>",
+            "image"             : "<?php echo $schema_args['img']; ?>",
+            "hasMap"            : "<?php echo 'https://www.google.com/maps/@'. $schema_args['map']; ?>",
+            "address"           : {
+            "@type"             : "PostalAddress",
+            "streetAddress"     : "<?php echo $schema_args['street']; ?>",
+            "addressLocality"   : "<?php $schema_args['city'] ?>",
+            "addressRegion"     : "<?php echo $schema_args['region'] ?>",
+            "postalCode"        :"<?php echo $schema_args['zip'] ?>"
             },
-            "description": "<?php echo $schema_args['description']; ?>",
-            "name": "<?php echo $schema_args['brand']; ?>",
-            "telephone": "<?php echo $schema_args['phone'] ?>",
-            "openingHours": "<?php echo $schema_args['hours']; ?>",
-            "paymentAccepted":"<?php echo $schema_args['payment_methods']; ?>",
-            "priceRange": "<?php echo $schema_args['price_range']; ?>",
+            "description"       : "<?php echo $schema_args['description']; ?>",
+            "name"              : "<?php echo $schema_args['brand']; ?>",
+            "telephone"         : "<?php echo $schema_args['phone'] ?>",
+            "openingHours"      : "<?php echo $schema_args['hours']; ?>",
+            "paymentAccepted"   : "<?php echo $schema_args['payment_methods']; ?>",
+            "priceRange"        : "<?php echo $schema_args['price_range']; ?>",
             "sameAs" : [
-            <?php if ( get_theme_mod( 'facebook_url_field' ) ){ ?>
-                "<?php echo get_theme_mod( 'facebook_url_field' ) ? get_theme_mod( 'facebook_url_field' ) : ''; ?>"
-            <?php }
-                    if ( get_theme_mod( 'twitter_url_field' ) ){?>
-                ,"<?php echo get_theme_mod( 'twitter_url_field' ) ? get_theme_mod( 'twitter_url_field' ) : ''; ?>"
-            <?php }
-                    if ( get_theme_mod( 'google_plus_url_field' ) ){ ?>
-                ,"<?php echo get_theme_mod( 'google_plus_url_field' ) ? get_theme_mod( 'google_plus_url_field' ) : ''; ?>"
-            <?php }
-                    if ( get_theme_mod( 'yelp_url_field' ) ){ ?>
-                ,"<?php echo get_theme_mod( 'yelp_url_field' ) ? get_theme_mod( 'yelp_url_field' ) : ''; ?>"
-            <?php } ?>
-            ]
+
+                "<?php echo $schema_args['facebook']    ? get_theme_mod( 'facebook_url_field' )     : ''; ?>",
+
+                "<?php echo $schema_args['twitter']     ? get_theme_mod( 'twitter_url_field' )      : ''; ?>",
+
+                "<?php echo $schema_args['gmb']         ? get_theme_mod( 'google_plus_url_field' )  : ''; ?>",
+
+                "<?php echo $schema_args['facebook']    ? get_theme_mod( 'yelp_url_field' )         : ''; ?>",
+
+                "<?php echo $schema_args['linkedin']    ? get_theme_mod( 'linkedin_url_field' )     : ''; ?>"
+
+                ]
             }
 
         </script>

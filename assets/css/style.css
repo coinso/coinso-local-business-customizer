@@ -51,6 +51,9 @@ img.lbs_logo{
 .lbs-list-inline li.lbs-social-item.yelp{
     background-color: #bb0000;
 }
+.lbs-list-inline li.lbs-social-item.linkedin{
+    background-color: #007bb5;
+}
 .lbs-list-inline li.lbs-social-item a{
     width: 30px;
     height: 30px;

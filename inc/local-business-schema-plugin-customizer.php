@@ -270,7 +270,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
         ));
 // Link to Location Settings
         $wp_customize->add_setting('hasMap', array(
-            'default' => _x('37.1843034', 'coinso_lbc'),
+            'default' => _x('', 'coinso_lbc'),
             'type' => 'theme_mod',
             'sanitize_callback' => ''
         ));
@@ -278,7 +278,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
 // Link to Location Control
         $wp_customize->add_control('hasMap', array(
             'label' => __('Add Long / Lat', 'coinso_lbc'),
-            'description'   =>  __('Separeta with ,', 'coinso_lbc'),
+            'description'   =>  __('Separate with ,', 'coinso_lbc'),
             'section' => 'Schema',
             'priority' => 20
         ));
@@ -363,7 +363,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'transport' => '',
             'sanitize_callback' => 'esc_url',
         ) );
-        // Add Yelp Plus control
+        // Add Yelp control
 
         $wp_customize->add_control( 'yelp_url_field', array(
             'type' => 'url',
@@ -371,6 +371,44 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'section' => 'social_links',
             'label' => __( 'Yelp URL Field', 'coinso_lbc' ),
             'description' => 'Put in the Yelp page link.',
+        ) );
+
+        // Add Linkedin settings
+
+        $wp_customize->add_setting( 'linkedin_url_field', array(
+            'default' => '',
+            'type' => 'theme_mod',
+            'capability' => 'edit_theme_options',
+            'transport' => '',
+            'sanitize_callback' => 'esc_url',
+        ) );
+        // Add Linkedin control
+
+        $wp_customize->add_control( 'linkedin_url_field', array(
+            'type' => 'url',
+            'priority' => 10,
+            'section' => 'social_links',
+            'label' => __( 'Linkedin URL Field', 'coinso_lbc' ),
+            'description' => 'Put in the Linkedin page link.',
+        ) );
+
+        // Add bbb settings
+
+        $wp_customize->add_setting( 'bbb_url_field', array(
+            'default' => '',
+            'type' => 'theme_mod',
+            'capability' => 'edit_theme_options',
+            'transport' => '',
+            'sanitize_callback' => 'esc_url',
+        ) );
+        // Add bbb control
+
+        $wp_customize->add_control( 'bbb_url_field', array(
+            'type' => 'url',
+            'priority' => 10,
+            'section' => 'social_links',
+            'label' => __( 'BBB URL Field', 'coinso_towing_theme' ),
+            'description' => 'Put in the BBB page link.',
         ) );
     }
 }

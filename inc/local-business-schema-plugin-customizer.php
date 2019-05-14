@@ -22,7 +22,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
         $wp_customize->add_section('Schema', array(
             'title' => __('Local Business Schema', 'coinso_lbc'),
             'description' => sprintf(__('Options for Local Business Schema', 'coinso_lbc')),
-            'priority' => 30,
+            'priority' => 10,
             'capability' => 'edit_theme_options',
             'theme_supports' => '',
             'panel' => 'Local Business Information'
@@ -234,7 +234,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'sanitize_callback' => ''
         ));
 
-//Hours settings
+//Hours Control
         $wp_customize->add_control('schema_opening_hours', array(
             'label' => __('Opening Hours', 'coinso_lbc'),
             'section' => 'Schema',
@@ -289,7 +289,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
 
 
         $wp_customize->add_section( 'social_links', array(
-            'priority' => 10,
+            'priority' => 20,
             'capability' => 'edit_theme_options',
             'theme_supports' => '',
             'title' => __( 'Social Links', 'coinso_lbc' ),
@@ -304,7 +304,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add Facebook control
 
@@ -313,7 +313,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'Facebook URL Field', 'coinso_lbc' ),
-            'description' => 'Put in the facebook page link.',
+            'description' => 'Enter  the facebook page link.',
         ) );
 
         // Add Twitter settings
@@ -323,7 +323,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add Twitter control
 
@@ -332,7 +332,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'Twitter URL Field', 'coinso_lbc' ),
-            'description' => 'Put in the twitter page link.',
+            'description' => 'Enter  the twitter page link.',
         ) );
 
         // Add Google Plus settings
@@ -342,7 +342,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add Google Plus control
 
@@ -351,7 +351,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'Google Plus URL Field', 'coinso_lbc' ),
-            'description' => 'Put in the google plus page link.',
+            'description' => 'Enter  the GMB link.',
         ) );
 
         // Add Yelp settings
@@ -361,7 +361,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add Yelp control
 
@@ -370,7 +370,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'Yelp URL Field', 'coinso_lbc' ),
-            'description' => 'Put in the Yelp page link.',
+            'description' => 'Enter  the Yelp page link.',
         ) );
 
         // Add Linkedin settings
@@ -380,7 +380,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add Linkedin control
 
@@ -389,7 +389,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'Linkedin URL Field', 'coinso_lbc' ),
-            'description' => 'Put in the Linkedin page link.',
+            'description' => 'Enter  the Linkedin page link.',
         ) );
 
         // Add bbb settings
@@ -399,7 +399,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'type' => 'theme_mod',
             'capability' => 'edit_theme_options',
             'transport' => '',
-            'sanitize_callback' => 'esc_url',
+            'sanitize_callback' => 'esc_url_raw',
         ) );
         // Add bbb control
 
@@ -408,7 +408,58 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 10,
             'section' => 'social_links',
             'label' => __( 'BBB URL Field', 'coinso_towing_theme' ),
-            'description' => 'Put in the BBB page link.',
+            'description' => 'Enter  the BBB page link.',
         ) );
+
+
+// Local Business Reviews Section
+        $wp_customize->add_section( 'business_reviews', array(
+            'priority' => 30,
+            'capability' => 'edit_theme_options',
+            'theme_supports' => '',
+            'title' => __( 'Local Business Rating', 'coinso_lbc' ),
+            'description' => __( 'Add your local business rating.', 'coinso_lbc' ),
+            'panel' => 'Local Business Information',
+        ) );
+
+//Rating settings
+        $wp_customize->add_setting('schema_reting_value', array(
+            'default' => _x('5', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'wp_filter_nohtml_kses'
+        ));
+
+//Rating Control
+        $wp_customize->add_control('schema_reting_value', array(
+            'label' => __('Rating', 'coinso_lbc'),
+            'section' => 'business_reviews',
+            'priority' => 20,
+        ));
+//Total Reviews settings
+        $wp_customize->add_setting('schema_total_reviews', array(
+            'default' => _x('1', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'wp_filter_nohtml_kses'
+        ));
+
+//Total Reviews Control
+        $wp_customize->add_control('schema_total_reviews', array(
+            'label' => __('Total Reviews', 'coinso_lbc'),
+            'section' => 'business_reviews',
+            'priority' => 20,
+        ));
+//CTA settings
+        $wp_customize->add_setting('schema_total_reviews_cta', array(
+            'default' => _x('1', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => 'wp_filter_nohtml_kses'
+        ));
+
+//CTA Control
+        $wp_customize->add_control('schema_total_reviews_cta', array(
+            'label' => __('CTA', 'coinso_lbc'),
+            'section' => 'business_reviews',
+            'priority' => 20
+        ));
     }
 }

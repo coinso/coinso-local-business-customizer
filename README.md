@@ -35,7 +35,13 @@ in Order to use the plugin for more than one location see Available Parameters b
 * gmb
 * yelp
 
-## How to use Parameters in shortcode?
+### Reviews (since V 2.2)
+* rating
+* total_reviews
+* cta
+
+
+## How to use the shortcode attributes (atts)?
 
 add the shortcode to the required city page and add the parameters inside the shortcode:<br/>
 [schema brand="New Brand Name" street="new street"]
@@ -43,6 +49,16 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 
 # Change Log
+## V 2.2 - Added google rating
+- Now you can add you google listing rating + a link to your GMB listing.<br>
+  New atts inside the shortcode:
+    * rating - insert listing's avg. rating
+    * total_reviews - insert listing's total review count
+    * cta - change the 'Write a Review' button text
+- Added Rating / Reviews section in the customizer
+- Added Social Networks (BBB, linkedin ) & changed google plus to GMB listing
+
+- Added [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker#github-integration) By [Yahnis Elsts](https://github.com/YahnisElsts)
 
 ## V 2.1
 - ld/json script to load on home page, only if the schema shortcode exists in the page.
@@ -68,3 +84,5 @@ City Name: input text, Add city name. select checkbox to show field's value on t
 Zip Code: input text, Add zip code. select checkbox to show field's value on the front end<br>
 Region: input text, Add region name. select checkbox to show field's value on the front end<br>
 Opening Hours: input text, Add opening hours and days by this format 'Mo-Su 00:00-23:59'. For multiple Hours, separate with comma (',')<br>
+
+

@@ -1,3 +1,16 @@
+:root{
+    --facebook: #3b5998;
+    --twitter: #55acee;
+    --google-plus:#dd4b39;
+    --linkedin:#007bb5;
+    --yelp:#bb0000;
+    --youtube:#FF0000;
+    --bbb:#005A78;
+    --star-orange:#E7711B;
+    --blue:#1a0dab;
+    --light-blue:#4d90fe;
+}
+
 #lbs_schema>ul{
     padding: 5px 10px 0 0;
 }
@@ -26,33 +39,74 @@ img.lbs_logo{
 .hours-list{
     list-style-type: none;
 }
+#appointment{
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 .lbs-list-inline{
     list-style-type: none;
 }
 .lbs-list-inline li.lbs-social-item{
-    display: inline-block;
-    float: left;
+    display: inline-flex;
+    /*float: left;*/
     margin-right: 10px;
 }
 .lbs-list-inline li.lbs-social-item.facebook{
-    background-color: #3b5998;
+    background-color: var(--facebook);
 }
 .lbs-list-inline li.lbs-social-item.twitter{
-    background-color: #55acee;
+    background-color: var(--twitter);
 }
 .lbs-list-inline li.lbs-social-item.google-plus{
-    background-color: #dd4b39;
+    background-color: var(--google-plus);
 }
 .lbs-list-inline li.lbs-social-item.yelp{
-    background-color: #bb0000;
+    background-color: var(--yelp);
+}
+.lbs-list-inline li.lbs-social-item.linkedin{
+    background-color: var(--linkedin);
+}
+.lbs-list-inline li.lbs-social-item.youtube{
+    background-color: var(--youtube);
+}
+.lbs-list-inline li.lbs-social-item.bbb{
+    background-color: var(--bbb);
 }
 .lbs-list-inline li.lbs-social-item a{
-    width: 30px;
-    height: 30px;
-    padding: 3px 5px;
-    display: inline-block;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    display: flex;
     color: #fff;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size:1.2em;
+}
+.lbs-total{
+    color: var(--star-orange);
+}
+.lbs-stars-list{
+    display: inline-flex;
+    list-style-type: none;
+}
+.lbs-total .lbs-total-reviews{
+    color: var(--blue);
+}
+.lbs-review .review_us .lbs-btn{
+    background-color: var(--light-blue);
+    color: #fff;
+    padding: .5em;
+    width: fit-content;
+}
+@media screen and (max-width: 600px){
+    .lbs-list-inline li.lbs-social-item{
+        margin:.5em;
+
+    }
+    .lbs-list-inline li.lbs-social-item a{
+        font-size: 1.4em;
+    }
 }
 .lbs-brand__name{
     font-size: 1.4em;

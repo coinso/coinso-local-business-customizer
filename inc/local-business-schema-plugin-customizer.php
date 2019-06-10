@@ -421,7 +421,22 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'description' => __( 'Add your local business rating.', 'coinso_lbc' ),
             'panel' => 'Local Business Information',
         ) );
+//Show Rating
+        $wp_customize->add_setting('schema_show_rating', array(
+            'capability' => 'edit_theme_options',
+            'sanitize_callback' => 'schema_show_rating_checkbox'
+        ));
 
+
+        $wp_customize->add_control('schema_show_rating', array(
+            'type' => 'checkbox',
+            'label' => __('Show Rating', 'coinso_lbc'),
+            'section' => 'business_reviews',
+            'priority' => 10
+        ));
+        function schema_show_rating_checkbox($checked){
+            return ( ( isset( $checked ) && true == $checked ) ? true : false );
+        }
 //Rating settings
         $wp_customize->add_setting('schema_reting_value', array(
             'default' => _x('5', 'coinso_lbc'),

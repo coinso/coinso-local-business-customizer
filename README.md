@@ -50,7 +50,8 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 # Change Log
 ## V 2.2.1
-
+* Fixed error made by empty review fields
+* Added conditions to show review fields
 
 ## V 2.2 - Added google rating
 - Now you can add you google listing rating + a link to your GMB listing.<br>

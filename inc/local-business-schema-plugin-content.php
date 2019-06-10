@@ -33,6 +33,7 @@ function coinso_schema_content($args, $content = null){
         'linkedin'              =>  get_theme_mod('linkedin_url_field')         ? get_theme_mod(  'linkedin_url_field')     : '',
         'bbb'                   =>  get_theme_mod('bbb_url_field')              ? get_theme_mod(  'bbb_url_field')          : '',
         'map'                   =>  get_theme_mod('hasMap')                     ? get_theme_mod('hasMap')                   : '',
+        'schema_show_rating'    =>  get_theme_mod( 'schema_show_rating'),
         'rating'                =>  get_theme_mod('schema_reting_value'),
         'total_reviews'         =>  get_theme_mod('schema_total_reviews'),
         'cta'                   =>  get_theme_mod('schema_total_reviews_cta')   ? get_theme_mod('schema_total_reviews_cta') : _x('Write a Review', 'coinso_lbc'),
@@ -180,6 +181,7 @@ function coinso_schema_content($args, $content = null){
             </div>
 
             <div class="clear"></div>
+            <?php if ( $schema_atts['schema_show_rating'] == true && $schema_atts['rating'] ){ ?>
             <div class="lbs-review">
                 <div itemscope itemtype="http://schema.org/Service" class="lbs-schema">
                     <meta itemprop="serviceType" content="<?php echo $schema_atts['type'];?>" />
@@ -222,17 +224,20 @@ function coinso_schema_content($args, $content = null){
                     </a>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div><!-- #footer-disclaimer -->
     <script type="application/ld+json">
             {
             "@context": "http://schema.org",
             "@type"             : "<?php echo $schema_atts['type']; ?>",
+            <?php if ( $schema_atts['schema_show_rating'] == true && $schema_atts['rating'] ){ ?>
             "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "<?php echo $schema_atts['rating']; ?>",
             "reviewCount": "<?php echo $schema_atts['total_reviews']; ?>"
             },
+            <?php } ?>
             "image"             : "<?php echo $schema_atts['img']; ?>",
             "hasMap"            : "<?php echo 'https://www.google.com/maps/@'. $schema_atts['map']; ?>",
             "address"           : {

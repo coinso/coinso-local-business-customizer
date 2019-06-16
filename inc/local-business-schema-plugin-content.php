@@ -99,12 +99,8 @@ function coinso_schema_content($args, $content = null){
                             <?php }
                             if( get_theme_mod('schema_show_zip') ){ ?>
                                 <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
-                            <?php }
-
-                            if ( get_theme_mod('schema_show_street_address') ){ ?>
-                                <span class="lbs-schema cap" id="appointment">* Office Services are by Appointment Only</span>
                             <?php } ?>
-
+                            
                         </div>
                     </div>
                 </li>

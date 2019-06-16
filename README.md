@@ -49,6 +49,9 @@ Save and review schema on [Google Structured Data Testing Tool](https://search.g
 
 
 # Change Log
+## V 2.2.2
+* Removed 'Office Services are by Appointment Only' note
+
 ## V 2.2.1
 * Fixed error made by empty review fields
 * Added conditions to show review fields

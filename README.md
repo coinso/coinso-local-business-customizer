@@ -47,6 +47,9 @@ add the shortcode to the required city page and add the parameters inside the sh
 [schema brand="New Brand Name" street="new street"]
 Save and review schema on [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/)
 
+# Change Log
+## V 2.2.3
+prefixed "is_decimal" function and moved it to the main plugin page
 
 # Change Log
 ## V 2.2.2

@@ -40,10 +40,7 @@ function coinso_schema_content($args, $content = null){
     ), $args);
 
     $stars_count = $schema_atts['rating'];
-    function is_decimal($val){
 
-        return is_numeric( $val ) && floor( $val ) != $val;
-    }
     ob_start(); ?>
 
 
@@ -189,7 +186,7 @@ function coinso_schema_content($args, $content = null){
                         <?php if ($stars_count){ ?>
                             <ul class="lbs-stars-list">
                                 <?php
-                                if ( is_decimal($stars_count) ){
+                                if ( lbs_is_decimal($stars_count) ){
                                     for ($i = 1; $i <= ($stars_count); $i++){
 
                                         echo '<li class="lbs-star"><i class="fas fa-star" aria-hidden="true"></i></li>';

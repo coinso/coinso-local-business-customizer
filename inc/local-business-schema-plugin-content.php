@@ -179,7 +179,7 @@ function coinso_schema_content($args, $content = null){
                 <div itemscope itemtype="http://schema.org/Service" class="lbs-schema">
                     <meta itemprop="serviceType" content="<?php echo $schema_atts['type'];?>" />
                     <span itemprop="provider" itemscope itemtype="http://schema.org/Organization">
-                    <span itemprop="name" class="lbs-name"><?php echo $schema_atts['business_name'];?></span>
+                    <span itemprop="name" class="lbs-name"><?php echo $schema_atts['brand'];?></span>
                 </span>
                     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="lbs-total">
                         <span itemprop="ratingValue" class="lbs-total-score"><?php echo $schema_atts['rating'];?></span> / <span itemprop="bestRating">5</span>

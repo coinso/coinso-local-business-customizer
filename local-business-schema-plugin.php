@@ -5,7 +5,7 @@ Plugin URI: https://github.com/coinso/coinso-local-business-customizer
 Description: Add local business schema from the customizer
 Author: Ido @ Coinso
 Author URI: http://coinso.com/project/ido-barnea
-Version: 2.2.4
+Version: 2.3
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: coinso_lbc
@@ -79,9 +79,10 @@ function coinso_register_schema_shortcode( ){
 function coinso_add_action_links ( $links ) {
     $query['autofocus[panel]'] = 'Local Business Information';
     $panel_link = add_query_arg( $query, admin_url( 'customize.php' ) );
-
+    $info_link = 'options-general.php?page=lbs';
     $mylinks = array(
-        '<a href="'. esc_url( $panel_link ).'">Go To Settings</a>'
+        '<a href="'. esc_url( $panel_link ).'">Go To Settings</a>',
+        '<a href="'. esc_url( $info_link ).'">How to use?</a>'
     );
     return array_merge( $links, $mylinks );
 }
@@ -89,4 +90,30 @@ function coinso_add_action_links ( $links ) {
 function lbs_is_decimal($val){
 
 	return is_numeric( $val ) && floor( $val ) != $val;
+}
+
+// create custom plugin settings menu
+add_action('admin_menu', 'lbs_create_menu');
+
+function lbs_create_menu() {
+
+    add_submenu_page(
+            'options-general.php',
+        'Local Business Schema',
+        'Local Business Schema',
+        'manage_options',
+        'lbs', 'lbs_settings_page' ,
+        plugins_url('/img/logo.png', __FILE__)
+    );
+}
+
+
+function lbs_settings_page() {
+    ob_start();
+
+    include ( plugin_dir_path( __FILE__ ). '/inc/local-business-schema-plugin-info.php');
+
+    $info = ob_get_clean();
+    echo $info;
+
 }

@@ -1,3 +1,4 @@
+![image](https://repository-images.githubusercontent.com/85707002/56a5e400-b1ff-11e9-9ebb-93d18202f323)
 # Coisno Local Business Customizer
 Add schema.org structured data to your city pages with an easy to use shortcode
 In order to use this plugin Download from <b>[git repository](https://github.com/coinso/coinso-local-business-customizer)</b>

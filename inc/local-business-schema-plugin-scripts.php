@@ -11,8 +11,17 @@ if ( !defined('PLUGIN_FOLDER')){
 }
 function coinso_local_business_schema_scripts() {
     wp_enqueue_style( 'local-business-schema-css', PLUGIN_FOLDER . '/assets/css/style.css');
-    wp_enqueue_style( 'local-business-schema-css', PLUGIN_FOLDER  . '/assets/css/style.css');
     wp_enqueue_style( 'local-business-schema-fonts', PLUGIN_FOLDER  . '/assets/fonts/fontawesome-5.0.2/web-fonts-with-css/css/fontawesome-all.min.css', array(), '5.2', 'all' );
     wp_enqueue_script( 'local-business-schema-js', PLUGIN_FOLDER  . '/assets/js/main.js', array('jquery'), '', false );
+
 }
 add_action('wp_enqueue_scripts','coinso_local_business_schema_scripts' );
+
+function lbs_admin_style(){
+    if ( is_admin() ){
+
+        wp_enqueue_style( 'local-business-schema-admin-css', PLUGIN_FOLDER  . '/assets/css/admin_style.css');
+
+    }
+}
+add_action('admin_enqueue_scripts', 'lbs_admin_style');

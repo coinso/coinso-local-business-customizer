@@ -1,0 +1,20 @@
+.lbs-info-wrap{
+
+    font-size: 1.2rem;
+}
+.lbs-info-wrap .description,
+.lbs-info-wrap p{
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+.lbs-info-wrap ul{
+    list-style-type: circle;
+    padding-left: 25px;
+}
+.lbs-info-wrap ul li{
+    font-size: 1rem;
+}
+.lbs-cl-table tr{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #fafafa;
+}

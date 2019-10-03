@@ -22,6 +22,7 @@ function coinso_schema_content($args, $content = null){
         'city'                  =>  get_theme_mod('schema_city')                ? get_theme_mod('schema_city')              : _x('City Name', 'coinso_lbc'),
         'region'                =>  get_theme_mod('schema_region')              ? get_theme_mod('schema_region')            : 'Region',
         'zip'                   =>  get_theme_mod('schema_zip')                 ? get_theme_mod('schema_zip')               : 'Zip Code',
+        'notice'                =>  get_theme_mod('schema_notice')              ? get_theme_mod('schema_notice')            : 'Notice',
         'phone'                 =>  get_theme_mod('schema_phone_number')        ? get_theme_mod('schema_phone_number')      : '(123) 456-7890',
         'hours'                 =>  get_theme_mod('schema_opening_hours')       ? get_theme_mod('schema_opening_hours')     : '',
         'payment_methods'       =>  get_theme_mod('schema_payment_methods')     ? get_theme_mod('schema_payment_methods')   : '',
@@ -130,6 +131,13 @@ function coinso_schema_content($args, $content = null){
                         <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e( $schema_atts['price_range'] ); ?></span>
                     </div>
                 </li>
+                <?php if( get_theme_mod('schema_show_notice')){ ?>
+                    <li class="lbs-inline-block">
+                        <small class="lbs-footer-notice">
+                            <?php echo $schema_atts['notice'];?>
+                        </small>
+                    </li>
+                <?php } ?>
             </ul>
             <div class="lbs-footer-social-icons">
                 <ul class="lbs-list-inline">

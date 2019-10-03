@@ -195,20 +195,20 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'priority' => 20
         ));
         /***********************************************/
-//Show City settings
+//Show Zip settings
         $wp_customize->add_setting('schema_show_zip', array(
             'capability' => 'edit_theme_options',
             'sanitize_callback' => 'schema_show_zip_checkbox'
         ));
 
-//Show City checkbox
+//Show Zip checkbox
         $wp_customize->add_control('schema_show_zip', array(
             'type' => 'checkbox',
             'label' => __('Show Zip Code', 'coinso_lbc'),
             'section' => 'Schema',
             'priority' => 20
         ));
-//Show City checkbox callback
+//Show Zip checkbox callback
         function schema_show_zip_checkbox($checked){
             return ( ( isset( $checked ) && true == $checked ) ? true : false );
         }
@@ -226,7 +226,39 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
             'section' => 'Schema',
             'priority' => 20
         ));
+        /***********************************************/
+//Show Notice settings
+        $wp_customize->add_setting('schema_show_notice', array(
+            'capability' => 'edit_theme_options',
+            'sanitize_callback' => 'schema_show_notice_checkbox'
+        ));
 
+//Show Notice checkbox
+        $wp_customize->add_control('schema_show_notice', array(
+            'type' => 'checkbox',
+            'label' => __('Show Notice Code', 'coinso_lbc'),
+            'section' => 'Schema',
+            'priority' => 20
+        ));
+//Show Notice checkbox callback
+        function schema_show_notice_checkbox($checked){
+            return ( ( isset( $checked ) && true == $checked ) ? true : false );
+        }
+
+//Notice settings
+        $wp_customize->add_setting('schema_notice', array(
+            'default' => _x('* This address is a mailing address', 'coinso_lbc'),
+            'type' => 'theme_mod',
+            'sanitize_callback' => ''
+        ));
+
+//Notice control
+        $wp_customize->add_control('schema_notice', array(
+            'label' => __('Notice', 'coinso_lbc'),
+            'section' => 'Schema',
+            'priority' => 20
+        ));
+    //*******************************
 //Hours settings
         $wp_customize->add_setting('schema_opening_hours', array(
             'default' => _x('Mo-Su 00:00-23:59', 'coinso_lbc'),

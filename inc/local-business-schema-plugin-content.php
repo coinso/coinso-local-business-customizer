@@ -35,7 +35,7 @@ function coinso_schema_content($args, $content = null){
         'bbb'                   =>  get_theme_mod('bbb_url_field')              ? get_theme_mod(  'bbb_url_field')          : '',
         'map'                   =>  get_theme_mod('hasMap')                     ? get_theme_mod('hasMap')                   : '',
         'schema_show_rating'    =>  get_theme_mod( 'schema_show_rating'),
-        'rating'                =>  get_theme_mod('schema_reting_value'),
+        'rating'                =>  get_theme_mod('schema_rating_value'),
         'total_reviews'         =>  get_theme_mod('schema_total_reviews'),
         'cta'                   =>  get_theme_mod('schema_total_reviews_cta')   ? get_theme_mod('schema_total_reviews_cta') : _x('Write a Review', 'coinso_lbc'),
     ), $args);

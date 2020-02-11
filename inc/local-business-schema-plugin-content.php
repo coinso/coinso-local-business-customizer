@@ -45,7 +45,7 @@ function coinso_schema_content($args, $content = null){
     ob_start(); ?>
 
 
-    <div id="lbs-footer-schema">
+    <div id="lbs-footer-schema" itemscope itemtype="http://schema.org/Service">
 
         <div itemscope itemtype="http://schema.org/<?php echo esc_html_e( $schema_atts['type'] );?>" id="lbs_schema">
             <ul class="lbs-footer-list">
@@ -190,6 +190,9 @@ function coinso_schema_content($args, $content = null){
                     <span itemprop="name" class="lbs-name"><?php echo $schema_atts['brand'];?></span>
                 </span>
                     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="lbs-total">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/<?php echo $schema_atts['type'];?>">
+                            <meta itemprop="name" content="<?php echo $schema_atts['brand'];?>">
+                        </div>
                         <span itemprop="ratingValue" class="lbs-total-score"><?php echo $schema_atts['rating'];?></span> / <span itemprop="bestRating">5</span>
                         <?php if ($stars_count){ ?>
                             <ul class="lbs-stars-list">

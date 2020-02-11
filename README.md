@@ -49,6 +49,10 @@ add the shortcode to the required city page and add the parameters inside the sh
 Save and review schema on [Google Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/)
 
 # Change Log
+## V 2.3.2
+fixed 'itemReviewd' error from google
+
+# Change Log
 ## V 2.3.1
 
 Notice field

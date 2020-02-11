@@ -3,5 +3,8 @@
  */
 
 (function ($) {
-    console.log('ok');
+
+    console.log('schema ok');
+
 })(jQuery);
+

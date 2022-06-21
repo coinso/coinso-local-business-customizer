@@ -63,7 +63,7 @@ if( !function_exists( 'coinso_local_business_customize_register' ) ){
         ));
 //Brand Name settings
         $wp_customize->add_setting('schema_brand_name', array(
-            'default' => _x( get_bloginfo('name'), 'coinso_lbc'),
+            'default' => get_option('coinso_lbc_location_brand_name') ? get_option('coinso_lbc_location_brand_name') : _x( get_bloginfo('name'), 'coinso_lbc'),
             'type' => 'option',
             'sanitize_callback' => ''
         ));

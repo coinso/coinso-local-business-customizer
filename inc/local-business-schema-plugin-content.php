@@ -14,30 +14,30 @@ function coinso_schema_content($args, $content = null){
     global $schema_atts;
     $schema_atts = shortcode_atts( array(
         'url'                   =>  get_home_url() ? get_home_url() : '',
-        'type'                  =>  get_theme_mod('schema_type')                ? get_theme_mod('schema_type')              : 'localBusiness',
-        'brand'                 =>  get_theme_mod('schema_brand_name')          ? get_theme_mod('schema_brand_name')        : get_bloginfo('name'),
-        'img'                   =>  get_theme_mod('schema_logo')                ? get_theme_mod('schema_logo')              : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
-        'description'           =>  get_theme_mod('schema_brand_description')   ? get_theme_mod('schema_brand_description') : get_bloginfo('description'),
-        'street'                =>  get_theme_mod('schema_street_address')      ? get_theme_mod('schema_street_address')    : _x( 'Street Name', 'coinso_lbc'),
-        'city'                  =>  get_theme_mod('schema_city')                ? get_theme_mod('schema_city')              : _x('City Name', 'coinso_lbc'),
-        'region'                =>  get_theme_mod('schema_region')              ? get_theme_mod('schema_region')            : 'Region',
-        'zip'                   =>  get_theme_mod('schema_zip')                 ? get_theme_mod('schema_zip')               : 'Zip Code',
-        'notice'                =>  get_theme_mod('schema_notice')              ? get_theme_mod('schema_notice')            : 'Notice',
-        'phone'                 =>  get_theme_mod('schema_phone_number')        ? get_theme_mod('schema_phone_number')      : '(123) 456-7890',
-        'hours'                 =>  get_theme_mod('schema_opening_hours')       ? get_theme_mod('schema_opening_hours')     : '',
-        'payment_methods'       =>  get_theme_mod('schema_payment_methods')     ? get_theme_mod('schema_payment_methods')   : '',
-        'price_range'           =>  get_theme_mod('schema_price_range')         ? get_theme_mod('schema_price_range')       : 'USD',
-        'facebook'              =>  get_theme_mod('facebook_url_field')         ? get_theme_mod('facebook_url_field')       : '',
-        'twitter'               =>  get_theme_mod('twitter_url_field')          ? get_theme_mod('twitter_url_field')        : '',
-        'gmb'                   =>  get_theme_mod('google_plus_url_field')      ? get_theme_mod('google_plus_url_field')    : '',
-        'yelp'                  =>  get_theme_mod('yelp_url_field')             ? get_theme_mod('yelp_url_field')           : '',
-        'linkedin'              =>  get_theme_mod('linkedin_url_field')         ? get_theme_mod(  'linkedin_url_field')     : '',
-        'bbb'                   =>  get_theme_mod('bbb_url_field')              ? get_theme_mod(  'bbb_url_field')          : '',
-        'map'                   =>  get_theme_mod('hasMap')                     ? get_theme_mod('hasMap')                   : '',
-        'schema_show_rating'    =>  get_theme_mod( 'schema_show_rating'),
-        'rating'                =>  get_theme_mod('schema_rating_value'),
-        'total_reviews'         =>  get_theme_mod('schema_total_reviews'),
-        'cta'                   =>  get_theme_mod('schema_total_reviews_cta')   ? get_theme_mod('schema_total_reviews_cta') : _x('Write a Review', 'coinso_lbc'),
+        'type'                  =>  get_option('schema_type')                ? get_option('schema_type')              : 'localBusiness',
+        'brand'                 =>  get_option('schema_brand_name')          ? get_option('schema_brand_name')        : get_bloginfo('name'),
+        'img'                   =>  get_option('schema_logo')                ? get_option('schema_logo')              : plugin_dir_url(__DIR__) .'/assets/img/logo.png',
+        'description'           =>  get_option('schema_brand_description')   ? get_option('schema_brand_description') : get_bloginfo('description'),
+        'street'                =>  get_option('schema_street_address')      ? get_option('schema_street_address')    : _x( 'Street Name', 'coinso_lbc'),
+        'city'                  =>  get_option('schema_city')                ? get_option('schema_city')              : _x('City Name', 'coinso_lbc'),
+        'region'                =>  get_option('schema_region')              ? get_option('schema_region')            : 'Region',
+        'zip'                   =>  get_option('schema_zip')                 ? get_option('schema_zip')               : 'Zip Code',
+        'notice'                =>  get_option('schema_notice')              ? get_option('schema_notice')            : 'Notice',
+        'phone'                 =>  get_option('schema_phone_number')        ? get_option('schema_phone_number')      : '(123) 456-7890',
+        'hours'                 =>  get_option('schema_opening_hours')       ? get_option('schema_opening_hours')     : '',
+        'payment_methods'       =>  get_option('schema_payment_methods')     ? get_option('schema_payment_methods')   : '',
+        'price_range'           =>  get_option('schema_price_range')         ? get_option('schema_price_range')       : 'USD',
+        'facebook'              =>  get_option('facebook_url_field')         ? get_option('facebook_url_field')       : '',
+        'twitter'               =>  get_option('twitter_url_field')          ? get_option('twitter_url_field')        : '',
+        'gmb'                   =>  get_option('google_plus_url_field')      ? get_option('google_plus_url_field')    : '',
+        'yelp'                  =>  get_option('yelp_url_field')             ? get_option('yelp_url_field')           : '',
+        'linkedin'              =>  get_option('linkedin_url_field')         ? get_option(  'linkedin_url_field')     : '',
+        'bbb'                   =>  get_option('bbb_url_field')              ? get_option(  'bbb_url_field')          : '',
+        'map'                   =>  get_option('hasMap')                     ? get_option('hasMap')                   : '',
+        'schema_show_rating'    =>  get_option( 'schema_show_rating'),
+        'rating'                =>  get_option('schema_rating_value'),
+        'total_reviews'         =>  get_option('schema_total_reviews'),
+        'cta'                   =>  get_option('schema_total_reviews_cta')   ? get_option('schema_total_reviews_cta') : _x('Write a Review', 'coinso_lbc'),
     ), $args);
 
     $stars_count = $schema_atts['rating'];
@@ -51,7 +51,7 @@ function coinso_schema_content($args, $content = null){
             <ul class="lbs-footer-list">
                 <li>
                     <div class="lbs-footer-logo">
-                        <a itemprop="url" href="<?php echo $schema_atts['url']; ?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ) ; ?>"  title="<?php echo get_theme_mod('schema_brand_name') ? get_theme_mod('schema_brand_name') : get_bloginfo('name'); ?>">
+                        <a itemprop="url" href="<?php echo $schema_atts['url']; ?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ) ; ?>"  title="<?php echo get_option('schema_brand_name') ? get_option('schema_brand_name') : get_bloginfo('name'); ?>">
                         <span itemprop="logo" itemtype="https://schema.org/ImageObject">
                             <img src="<?php echo  $schema_atts['img'] ;?>" alt="<?php echo esc_html_e( $schema_atts['brand'] ); ?>" itemprop="image" class="lbs_logo">
                         </span>
@@ -78,7 +78,7 @@ function coinso_schema_content($args, $content = null){
                         <div class="lbs-description" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
 
                             <?php
-                            if( get_theme_mod('schema_show_street_address') ){
+                            if( get_option('schema_show_street_address') ){
                                 if ( $schema_atts['map']){ ?>
                                     <a href="https://www.google.com/maps/@<?php echo $schema_atts['map'];?>,10z" title="Click to see location on the map" target="_blank">
                                         <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>
@@ -89,13 +89,13 @@ function coinso_schema_content($args, $content = null){
                                 <span class="lbs-schema-cap" itemprop="streetAddress"><?php echo esc_html_e($schema_atts['street']); ?></span>
                             <?php }
 
-                            if( get_theme_mod('schema_show_city')){ ?>
+                            if( get_option('schema_show_city')){ ?>
                                 <span class="lbs-schema-cap" itemprop="addressLocality"><?php echo  esc_html_e($schema_atts['city']);?></span>
                             <?php }
-                            if( get_theme_mod('schema_show_region') ){ ?>
+                            if( get_option('schema_show_region') ){ ?>
                                 <span class="lbs-schema-cap" itemprop="addressRegion"><?php echo  esc_html_e($schema_atts['region']) ?></span>
                             <?php }
-                            if( get_theme_mod('schema_show_zip') ){ ?>
+                            if( get_option('schema_show_zip') ){ ?>
                                 <span class="lbs-schema-cap" itemprop="postalCode"><?php echo esc_html_e($schema_atts['zip']) ?></span>
                             <?php } ?>
                             
@@ -131,7 +131,7 @@ function coinso_schema_content($args, $content = null){
                         <span itemprop="priceRange" class='price-item'><?php echo  esc_html_e( $schema_atts['price_range'] ); ?></span>
                     </div>
                 </li>
-                <?php if( get_theme_mod('schema_show_notice')){ ?>
+                <?php if( get_option('schema_show_notice')){ ?>
                     <li class="lbs-inline-block">
                         <small class="lbs-footer-notice">
                             <?php echo $schema_atts['notice'];?>
@@ -259,17 +259,17 @@ function coinso_schema_content($args, $content = null){
             "priceRange"        : "<?php echo $schema_atts['price_range']; ?>",
             "sameAs" : [
 
-                "<?php echo $schema_atts['facebook']    ? get_theme_mod( 'facebook_url_field' )     : ''; ?>",
+                "<?php echo $schema_atts['facebook']    ? get_option( 'facebook_url_field' )     : ''; ?>",
 
-                "<?php echo $schema_atts['twitter']     ? get_theme_mod( 'twitter_url_field' )      : ''; ?>",
+                "<?php echo $schema_atts['twitter']     ? get_option( 'twitter_url_field' )      : ''; ?>",
 
-                "<?php echo $schema_atts['gmb']         ? get_theme_mod( 'google_plus_url_field' )  : ''; ?>",
+                "<?php echo $schema_atts['gmb']         ? get_option( 'google_plus_url_field' )  : ''; ?>",
 
-                "<?php echo $schema_atts['yelp']        ? get_theme_mod( 'yelp_url_field' )         : ''; ?>",
+                "<?php echo $schema_atts['yelp']        ? get_option( 'yelp_url_field' )         : ''; ?>",
 
-                "<?php echo $schema_atts['linkedin']    ? get_theme_mod( 'linkedin_url_field' )     : ''; ?>",
+                "<?php echo $schema_atts['linkedin']    ? get_option( 'linkedin_url_field' )     : ''; ?>",
 
-                "<?php echo $schema_atts['bbb']         ? get_theme_mod( 'bbb_url_field' )          : ''; ?>"
+                "<?php echo $schema_atts['bbb']         ? get_option( 'bbb_url_field' )          : ''; ?>"
 
                 ]
             }

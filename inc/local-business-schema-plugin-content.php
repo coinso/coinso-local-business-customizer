@@ -231,6 +231,18 @@ function coinso_schema_content($args, $content = null){
             <?php } ?>
         </div>
     </div><!-- #footer-disclaimer -->
+    <?php
+//    $arr = [
+//        '@context'  => 'http://schema.org',
+//        '@type'     =>  $schema_atts['type'],
+//        'aggregateRating'  =>   [
+//            "ratingValue"=> $schema_atts['rating'],
+//            "reviewCount"=> $schema_atts['total_reviews'],
+//        ]
+//    ];
+//    $json = json_encode($arr);
+//    echo $json;
+    ?>
     <script type="application/ld+json">
             {
             "@context": "http://schema.org",

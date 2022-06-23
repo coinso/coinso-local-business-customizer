@@ -232,6 +232,7 @@ function coinso_schema_content($args, $content = null){
         </div>
     </div><!-- #footer-disclaimer -->
     <?php
+    
 //    $arr = [
 //        '@context'  => 'http://schema.org',
 //        '@type'     =>  $schema_atts['type'],
